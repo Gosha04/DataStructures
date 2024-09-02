@@ -7,8 +7,8 @@ class Model {
     public: 
     Model();
     ~Model();
-    std::string Model::translateSingleConsonant(char c);
-    std::string Model::translateSingleVowel(char c);
+    std::string translateSingleConsonant(char c);
+    std::string translateSingleVowel(char c);
 };
 
 #endif

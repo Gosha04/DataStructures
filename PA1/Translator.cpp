@@ -1,10 +1,6 @@
-#include <iostream>
-#include <string>
-#include <cctype>
-#include "Model.h"
 #include "Translator.h"
 
-Translator::Translator()
+Translator::Translator() : vowels("aeiuyo")
 {
 }
 
@@ -12,15 +8,14 @@ Translator::~Translator()
 {
 }
 
-Model model;
-
 std::string Translator::translateEnglishWord (std::string s) {
     std::string result = "";
-    for (char c : s) {
-        if(vowels.find(c) == std::string::npos) {
-            result += model.translateSingleConsonant(c);
+    int size = s.size();
+    for (int i = 0; i < size; i++) {
+        if (vowels.find(s[i]) == std::string::npos) {
+            result += model.translateSingleConsonant(s[i]);
         } else {
-            result += model.translateSingleVowel(c);
+            result += model.translateSingleVowel(s[i]);
         }
     }
     return result;
@@ -29,11 +24,15 @@ std::string Translator::translateEnglishWord (std::string s) {
 std::string Translator::translateEnglishSentence (std::string s) {
     std::string result = "";
     int x = 0;
-    for (int i = 0; i < s.size(); i++) {
+    int size = s.size();
+    for (int i = 0; i < size; i++) {
         if (isalpha(s[i]) != 0) {
-            result += translateEnglishWord(s.substr(x, i-x-1));
+            result += translateEnglishWord(s.substr(x, i - x - 1));
             result += s[i];
         }
+    }
+    if (x < size) {
+        result += translateEnglishWord(s.substr(x));
     }
     return result;
 }
