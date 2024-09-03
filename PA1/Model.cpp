@@ -10,23 +10,38 @@ PA1
 
 #include "Model.h"
 
+/*
+Default Constructor
+*/
 Model::Model()
 {
 }
 
+/*
+Default Destructor
+*/
 Model::~Model()
 {
 }
 
+/*
+a. translateSingleConsonant
+b. Returns a string 's' in the format "(c)o(c)", where (c) is the input character from param 'c'.
+c. Params: A single char 'c'
+*/
 std::string Model::translateSingleConsonant (char c) {
     std::string s; 
     return s = c + std::string("o") + c;
 }
 
+/*
+a. translateSingleVowel
+b. Returns a string 's' which = 'c'
+c. Params: A single char 'c'
+*/
 std::string Model::translateSingleVowel (char c) {
     std::string s; 
     return s = c;
-
 }
 
 
