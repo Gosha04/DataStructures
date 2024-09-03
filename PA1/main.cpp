@@ -1,3 +1,12 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu
+CPSC 350-02
+PA1
+*/
+
+
 #include "Translator.h"
 #include "Model.h"
 #include "FileProcessor.h"
