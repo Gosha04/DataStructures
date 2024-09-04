@@ -13,7 +13,7 @@ Translator translator;
 
 public:
     FileProcessor();
-    ~FileProcessor();
+    virtual ~FileProcessor();
     void processString(std::string file, std::string output);
 };
 

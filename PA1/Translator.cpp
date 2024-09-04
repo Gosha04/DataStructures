@@ -15,7 +15,7 @@ PA1
 /*
 Default Constructor. Initializes the string 'vowels' with all English vowels, including 'y'.
 */
-Translator::Translator() : vowels("aeiuyo")
+Translator::Translator() : m_vowels("aeiuyo")
 {
 }
 
@@ -35,7 +35,7 @@ std::string Translator::translateEnglishWord (std::string s) {
     std::string result = "";
 
     for (int i = 0; i < s.size(); i++) {
-        if (vowels.find(s[i]) == std::string::npos) { // checks if a char within 's' is a vowel or consonant
+        if (m_vowels.find(s[i]) == std::string::npos) { // checks if a char within 's' is a vowel or consonant
             result += model.translateSingleConsonant(s[i]);
         } else {
             result += model.translateSingleVowel(s[i]); // Punctuation isn't translated it remains as is

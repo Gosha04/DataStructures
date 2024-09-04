@@ -8,12 +8,12 @@
 class Translator
 {
 private:
-std::string vowels;
+std::string m_vowels;
 Model model;
 
 public:
     Translator();
-    ~Translator();
+    virtual ~Translator();
     std::string translateEnglishWord (std::string s);
     std::string translateEnglishSentence (std::string s);
 };

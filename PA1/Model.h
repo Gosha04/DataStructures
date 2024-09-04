@@ -6,7 +6,7 @@
 class Model {
     public: 
     Model();
-    ~Model();
+    virtual ~Model();
     std::string translateSingleConsonant(char c);
     std::string translateSingleVowel(char c);
 };
