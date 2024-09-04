@@ -31,7 +31,7 @@ c. Params: A single char 'c'
 */
 std::string Model::translateSingleConsonant (char c) {
     std::string s; 
-    return s = c + std::string("o") + c;
+    return s = c + std::string("o") + static_cast<char>(std::tolower(c));
 }
 
 /*
