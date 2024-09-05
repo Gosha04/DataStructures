@@ -14,15 +14,15 @@ main.cpp
 Errors and Limitations:
 N/A
 
+
 References:
 To figure out HTML: https://html.com/#Creating_Your_First_HTML_Webpage 
 
 To refresh IO: https://www.geeksforgeeks.org/getline-string-c/
 
 
-Build Instructions
-
 Compile: g++ -o main.exe main.cpp Model.cpp Translator.cpp FileProcessor.cpp
+
 Run: ./main.exe input.txt output.html
 
 
