@@ -6,6 +6,7 @@ CPSC 350-02
 PA1
 */
 
+// Purpose: Runs the PA1 Robber Translator program
 
 #include "Translator.h"
 #include "Model.h"

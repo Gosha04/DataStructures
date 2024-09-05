@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu
+CPSC 350-02
+PA1
+*/
+
 #ifndef FILEP_H
 #define FILEP_H
 
@@ -9,7 +17,7 @@ class FileProcessor
 {
 
 private:
-Translator translator;
+Translator translator; // Translator object to translate sentences during processing
 
 public:
     FileProcessor();
