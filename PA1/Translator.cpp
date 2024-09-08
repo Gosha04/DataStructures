@@ -15,7 +15,7 @@ PA1
 /*
 Default Constructor. Initializes the string 'vowels' with all English vowels, including 'y'.
 */
-Translator::Translator() : m_vowels("aeiuyo")
+Translator::Translator() : m_vowels("aeiuyoAEIOUY")
 {
 }
 
