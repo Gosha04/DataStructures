@@ -45,12 +45,5 @@ void Mario::ResetCoins() {
 }
 
 void Mario::AddCoin() {
-    m_numCoins++;
-}
-
-void Mario::AddPow() {
-    m_powLevel ++;
-    if (m_powLevel > 2) {
-        m_powLevel = 2;
-    }
+    m_numCoins += 1;
 }
