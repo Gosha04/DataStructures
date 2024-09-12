@@ -34,6 +34,8 @@ public:
     void ResetCoins();
     // adds a coin to marios total
     void AddCoin();
+    // adds one pow if you pick up a mushroom
+    void AddPow();
 private:
     int m_lives;
     int m_numCoins;
