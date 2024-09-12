@@ -32,6 +32,11 @@ public:
     int GetPowLevel();
     // resets coins to 0 and adds one life
     void ResetCoins();
+    // adds 1 to coins
+    void AddCoin();
+    // adds 1 pow if you pick up a mushroom
+    void AddPow();
+    
 private:
     int m_lives;
     int m_numCoins;
