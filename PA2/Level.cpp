@@ -45,7 +45,7 @@ void Level::makeGrid(int n) {
 
 void Level::displayGrid() {
     for(int i = 0; i < m_N; ++i) {
-        for(int j = 0; j < m_N; ++i) {
+        for(int j = 0; j < m_N; ++j) {
             std::cout << m_grid[i][j];
         }
         std::cout << "\n";
@@ -66,11 +66,13 @@ void Level::checkSpot(char c) {
         break;
     case 'k':
         //TODO koopa.fight();
+        break;
     case 'b':
         //TODO boss.fight();
         break;
     case 'w':
         //TODO world.warp();
+        break;
     default:
         break;
     }
@@ -78,7 +80,7 @@ void Level::checkSpot(char c) {
 
 void Level::populateGrid(int x, int m, int c, int g, int k) {
     for(int i = 0; i < m_N; ++i) {
-        for(int j = 0; j < m_N; ++i) {
+        for(int j = 0; j < m_N; ++j) {
             int number = (rand() % 100) + 1;
 
             if (number <= x)
