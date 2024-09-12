@@ -20,6 +20,7 @@ int Mario::getLives() {
 
 void Mario::decreaseLives() {
     m_lives -= 1;
+    m_powLevel = 0;
 }
 
 int Mario::getNumCoins() {
@@ -35,7 +36,12 @@ int Mario::getPowLevel() {
 }
 
 void Mario::decreasePowLevel(int powLevel) {
-    m_powLevel = powLevel;
+    if (m_powLevel >= powLevel) {
+        m_powLevel -= powLevel;
+    }
+    else {
+        decreaseLives();
+    }
 }
 
 // resets coin count to 0 and adds one life to mario

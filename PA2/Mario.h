@@ -7,8 +7,6 @@ power levels by coming in contact with a mushroom (a “magic” mushroom), and 
 hurt by an enemy. More on that later.
 */
 
-// Test
-
 #ifndef MARIO_H
 #define MARIO_H
 
