@@ -52,7 +52,7 @@ void Level::displayGrid() {
     }
 }
 
-char Level::checkSpot(char c) {
+void Level::checkSpot(char c) {
     switch (c)
     {
     case 'c':
@@ -84,13 +84,13 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
             if (number <= x)
             {
                 m_grid[i][j] = 'x';
-            } else if (x < number <= m + x) {
+            } else if (x < number && number <= m + x) {
                 m_grid[i][j] = 'm';
-            } else if (m + x < number <= m + x + c) {
+            } else if (m + x < number && number <= m + x + c) {
                 m_grid[i][j] = 'c';
-            } else if (m + x + c < number <= m + x + c + g) {
+            } else if (m + x + c < number && number <= m + x + c + g) {
                 m_grid[i][j] = 'g';
-            } else if (100 - k < number <= 100) {
+            } else if ((100 - k) < number && number <= 100) {
                 m_grid[i][j] = 'k';
             } else {
                 std::cout << "Edge Case: " << number << std::endl;
@@ -119,3 +119,11 @@ void Level::placeMario() {
     m_grid[H_row][H_column] = 'H';
 }
 
+int main(int argc, char const *argv[])
+{
+    Level level(5);
+    level.populateGrid(20, 15, 15, 30, 20);
+    level.displayGrid();
+
+    return 0;
+}
