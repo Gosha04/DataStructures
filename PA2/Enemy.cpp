@@ -4,11 +4,12 @@
 
 Enemy::Enemy() {
     m_MarioWinChance = 100;
-    m_enemyPowLevel = 1;
+    m_EnemyPowLevel = 1;
 }
 
-Enemy::Enemy(int marioWinChance) {
+Enemy::Enemy(int marioWinChance, int enemyPowLevel) {
     m_MarioWinChance = marioWinChance;
+    m_EnemyPowLevel = enemyPowLevel;
     std::srand(time(NULL));
 }
 
@@ -20,6 +21,14 @@ int Enemy::getMarioWinChance() {
 
 void Enemy::setMarioWinChance(int chance) {
     m_MarioWinChance = chance;
+}
+
+void Enemy::setEnemyPowLevel(int powLevel) {
+    m_EnemyPowLevel = powLevel;
+}
+
+int Enemy::getEnemyPowLevel() {
+    return m_EnemyPowLevel;
 }
 
 bool Enemy::battle() {
@@ -38,6 +47,6 @@ bool Enemy::battle() {
 
 int main () {
     Mario mario(5);
-    Enemy koopa(55);
+    Enemy koopa(55 ,1);
     koopa.battle();  
 }
