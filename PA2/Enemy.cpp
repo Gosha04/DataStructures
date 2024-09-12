@@ -4,28 +4,26 @@
 
 Enemy::Enemy() {
     m_MarioWinChance = 100;
-    Mario mario(3);
-    m_Mario = mario;
+    m_enemyPowLevel = 1;
 }
 
-Enemy::Enemy(int marioWinChance, Mario mario) {
-    m_MarioWinChance = m_MarioWinChance;
-    m_Mario = mario;
+Enemy::Enemy(int marioWinChance) {
+    m_MarioWinChance = marioWinChance;
+    std::srand(time(NULL));
 }
 
 Enemy::~Enemy() {}
 
-int Enemy::GetMarioWinChance() {
+int Enemy::getMarioWinChance() {
     return m_MarioWinChance;
 }
 
-void Enemy::SetMarioWinChance(int chance) {
+void Enemy::setMarioWinChance(int chance) {
     m_MarioWinChance = chance;
 }
 
-bool Enemy::Battle() {
-    int result;
-    result = (rand() % 100) + 1;
+bool Enemy::battle() {
+    int result = (rand() % 100) + 1;
     std::cout << "Win chance: " << m_MarioWinChance << std::endl;
     std::cout << "Random number: " << result << std::endl;
     if (result <= m_MarioWinChance) {
@@ -36,4 +34,10 @@ bool Enemy::Battle() {
         std::cout << "Mario lost" << std::endl;
         return false;
     }
+}
+
+int main () {
+    Mario mario(5);
+    Enemy koopa(55);
+    koopa.battle();  
 }

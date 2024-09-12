@@ -8,18 +8,20 @@ public:
     // default constructor
     Enemy();
     // allow user to pass in marios win chance
-    Enemy(int marioWinChance, Mario mario);
+    Enemy(int marioWinChance);
     // virtual destructor
     virtual ~Enemy();
     // get marios win chance
-    virtual int GetMarioWinChance();
+    int getMarioWinChance();
     // set the chance that mario wins battle agains the enemy
-    virtual void SetMarioWinChance(int chance);
+    void setMarioWinChance(int chance);
+
+    int getEnemyPowLevel();
     // return true if mario wins
-    virtual bool Battle();
+    bool battle();
 private:
     int m_MarioWinChance;
-    Mario m_Mario;
+    int m_enemyPowLevel;
 };
 
 #endif

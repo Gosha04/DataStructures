@@ -19,23 +19,23 @@ public:
     // virtual destructor
     virtual ~Mario();
     // mutator function for lives
-    void SetLives(int L);
+    void decreaseLives();
     // accessor function for lives
-    int GetLives();
+    int getLives();
     // mutator function for coins
-    void SetNumCoins(int coins);
+    void setNumCoins(int coins);
     // accessor function for coins
-    int GetNumCoins();
+    int getNumCoins();
     // mutator function for power level
-    void SetPowLevel(int powLevel);
+    void decreasePowLevel(int powLevel);
     // accessor function for power level
-    int GetPowLevel();
+    int getPowLevel();
     // resets coins to 0 and adds one life
-    void ResetCoins();
+    void resetCoins();
     // adds a coin to marios total
-    void AddCoin();
+    void addCoin();
     // adds one pow if you pick up a mushroom
-    void AddPow();
+    void addPow();
 private:
     int m_lives;
     int m_numCoins;

@@ -1,7 +1,7 @@
 #include "Mario.h"
 
 Mario::Mario() {
-    m_lives = 3;
+    m_lives = 5;
     m_powLevel = 0;
     m_numCoins = 0;
 }
@@ -14,41 +14,42 @@ Mario::Mario(int L) {
 
 Mario::~Mario() {}
 
-int Mario::GetLives() {
+int Mario::getLives() {
     return m_lives;
 }
 
-void Mario::SetLives(int L) {
-    m_lives = L;
+void Mario::decreaseLives() {
+    m_lives -= 1;
 }
 
-int Mario::GetNumCoins() {
+int Mario::getNumCoins() {
     return m_numCoins;
 }
 
-void Mario::SetNumCoins(int coins) {
+void Mario::setNumCoins(int coins) {
     m_numCoins = coins;
 }
 
-int Mario::GetPowLevel() {
+int Mario::getPowLevel() {
     return m_powLevel;
 }
 
-void Mario::SetPowLevel(int powLevel) {
+void Mario::decreasePowLevel(int powLevel) {
     m_powLevel = powLevel;
 }
 
 // resets coin count to 0 and adds one life to mario
-void Mario::ResetCoins() {
+void Mario::resetCoins() {
     m_numCoins = 0;
     m_lives += 1;
 }
-
-void Mario::AddCoin() {
+// add a coin to marios total when he lands on the spot
+void Mario::addCoin() {
     m_numCoins += 1;
 }
-
-void Mario::AddPow() {
+// increases Marios power level
+// If power level is already at 2 it resets it back to 2
+void Mario::addPow() {
     m_powLevel += 1;
     if (m_powLevel < 2) {
         m_powLevel = 2;
