@@ -7,6 +7,8 @@ power levels by coming in contact with a mushroom (a “magic” mushroom), and 
 hurt by an enemy. More on that later.
 */
 
+// This is main
+
 #ifndef MARIO_H
 #define MARIO_H
 
@@ -36,10 +38,13 @@ public:
     void addCoin();
     // adds one pow if you pick up a mushroom
     void addPow();
+    // increases number of enemies killed
+    void increaseEnemiesKilled();
 private:
     int m_lives;
     int m_numCoins;
     int m_powLevel;
+    int m_enemiesKilledOnCurrentLife;
 };
 
 #endif
