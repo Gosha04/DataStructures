@@ -38,10 +38,13 @@ public:
     void addCoin();
     // adds one pow if you pick up a mushroom
     void addPow();
+    // increases number of enemies killed
+    void increaseEnemiesKilled();
 private:
     int m_lives;
     int m_numCoins;
     int m_powLevel;
+    int m_enemiesKilledOnCurrentLife;
 };
 
 #endif
