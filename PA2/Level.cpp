@@ -52,28 +52,30 @@ void Level::displayGrid() {
     }
 }
 
-void Level::checkSpot(char c) {
+char Level::checkSpot(char c) {
+    char spot;
     switch (c)
     {
     case 'c':
-        m_mario.addCoin();
+        spot = c;
         break;
     case 'm':
-        m_mario.addPow();
+       spot = c;
         break;
     case 'g':
-        //TODO goomba.fight();
+        spot = c;
         break;
     case 'k':
-        //TODO koopa.fight();
+        spot = c;
         break;
     case 'b':
-        //TODO boss.fight();
+        spot = c;
         break;
     case 'w':
-        //TODO world.warp();
+        spot = c;
         break;
     default:
+        spot = 'x';
         break;
     }
 }
@@ -121,8 +123,7 @@ void Level::placeMario() {
     m_grid[H_row][H_column] = 'H';
 }
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     Level level(5);
     level.populateGrid(20, 15, 15, 30, 20);
     level.placeMario();
