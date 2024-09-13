@@ -125,6 +125,7 @@ int main(int argc, char const *argv[])
 {
     Level level(5);
     level.populateGrid(20, 15, 15, 30, 20);
+    level.placeMario();
     level.displayGrid();
 
     return 0;
