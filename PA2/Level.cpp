@@ -130,4 +130,3 @@ int main(int argc, char const *argv[]) {
     level.displayGrid();
 
     return 0;
-}
