@@ -78,6 +78,7 @@ char Level::checkSpot(char c) {
         spot = 'x';
         break;
     }
+    return spot;
 }
 
 void Level::populateGrid(int x, int m, int c, int g, int k) {
@@ -130,3 +131,4 @@ int main(int argc, char const *argv[]) {
     level.displayGrid();
 
     return 0;
+}
