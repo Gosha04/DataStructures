@@ -52,33 +52,9 @@ void Level::displayGrid() {
     }
 }
 
-char Level::checkSpot(char c) {
-    char spot;
-    switch (c)
-    {
-    case 'c':
-        spot = c;
-        break;
-    case 'm':
-       spot = c;
-        break;
-    case 'g':
-        spot = c;
-        break;
-    case 'k':
-        spot = c;
-        break;
-    case 'b':
-        spot = c;
-        break;
-    case 'w':
-        spot = c;
-        break;
-    default:
-        spot = 'x';
-        break;
-    }
-    return spot;
+char Level::checkSpot(int row, int column) {
+    return m_grid[row][column];
+    
 }
 
 void Level::populateGrid(int x, int m, int c, int g, int k) {
@@ -126,9 +102,12 @@ void Level::placeMario() {
 
 int main(int argc, char const *argv[]) {
     Level level(5);
-    level.populateGrid(20, 15, 15, 30, 20);
+    level.populateGrid(4, 20, 26, 25, 25);
     level.placeMario();
+    level.addPipe();
     level.displayGrid();
+
+    std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;
 
     return 0;
 }
