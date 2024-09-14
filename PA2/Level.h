@@ -21,7 +21,7 @@ public:
     char** getGrid(); // Getter for grid
     void deleteGrid(); // Deletes grid
     void makeGrid(int n); // Makes a new grid, useful for new Level
-    char checkSpot(char c); // Checks the spot Mario is on and executes a command
+    char checkSpot(int row, int column); // Checks the spot Mario is on and returns what is on that blocks
     void displayGrid(); // Displays the grid in char form
     void populateGrid(int x, int m, int c, int g, int k); // Populates each square of the level with a character
     void addPipe(); // Adds a warp pipe to the level
