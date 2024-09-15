@@ -31,7 +31,7 @@ int Enemy::getEnemyPowLevel() {
     return m_EnemyPowLevel;
 }
 
-bool Enemy::battle() {
+bool Enemy::battleMath() {
     int result = (rand() % 100) + 1;
     std::cout << "Win chance: " << m_MarioWinChance << std::endl;
     std::cout << "Random number: " << result << std::endl;
@@ -48,5 +48,5 @@ bool Enemy::battle() {
 int main () {
     Mario mario(5);
     Enemy koopa(55 ,1);
-    koopa.battle();  
+    koopa.battleMath();  
 }

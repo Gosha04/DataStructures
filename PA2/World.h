@@ -7,12 +7,15 @@ class World
 
 {
 private:
-    Level level;
+    Level m_level;
+    int m_currLvl;
+    int m_worldSize;
 
 public:
     World ();
-    World(int L);
+    World(int L, int N);
     ~World();
+    char nextLevel();
 };
 
 #endif

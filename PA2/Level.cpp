@@ -1,8 +1,6 @@
 #include "Level.h"
 
-Level::Level() {
-    m_N = 0;
-    m_grid = nullptr;
+Level::Level() : m_N(0), m_grid(nullptr) {
     std::srand(time(NULL));
 
 }
@@ -86,25 +84,29 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
     m_grid[b_row][b_column] = 'b';
 }
 
-void Level::addPipe() {
+void Level::placePipe() {
     int w_row = (rand() % m_N);
     int w_column = (rand() % m_N);
 
     m_grid[w_row][w_column] = 'w';
 }
 
-void Level::placeMario() {
+char Level::placeMario() {
     int H_row = (rand() % m_N);
     int H_column = (rand() % m_N);
 
+    char currSpot = m_grid[H_row][H_column];
+
     m_grid[H_row][H_column] = 'H';
+
+    return currSpot;
 }
 
 int main(int argc, char const *argv[]) {
     Level level(5);
     level.populateGrid(4, 20, 26, 25, 25);
     level.placeMario();
-    level.addPipe();
+    level.placePipe();
     level.displayGrid();
 
     std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;

@@ -7,8 +7,8 @@ Mario::Mario() {
     m_enemiesKilledOnCurrentLife = 0;
 }
 
-Mario::Mario(int L) {
-    m_lives = L;
+Mario::Mario(int life) {
+    m_lives = life;
     m_powLevel = 0;
     m_numCoins = 0;
     m_enemiesKilledOnCurrentLife = 0;
