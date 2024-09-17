@@ -5,6 +5,7 @@
 Enemy::Enemy() {
     m_MarioWinChance = 100;
     m_EnemyPowLevel = 1;
+    std::srand(time(NULL));
 }
 
 Enemy::Enemy(int marioWinChance, int enemyPowLevel) {

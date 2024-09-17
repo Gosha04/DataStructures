@@ -1,8 +1,6 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "Mario.h"
-
 class Enemy {
 public:
     // default constructor

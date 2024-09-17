@@ -86,8 +86,19 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
     m_grid[b_row][b_column] = 'b';
 }
 //TODO Change this so mario cant start here and doesn't replace boss
-void Level::placePipe(int row, int column) {
-    m_grid[row][column] = 'w';
+void Level::placePipe() {
+    while (true) {
+        int p_row = rand() % m_N;
+        int p_column = rand() % m_N;
+        if (m_grid[p_row][p_column] != 'b') {
+            m_grid[p_row][p_column] = 'w';
+            break;
+        }
+        else {
+            continue;
+        }
+    }
+    
 }
 
 void Level::placeMario(int row, int column) {
