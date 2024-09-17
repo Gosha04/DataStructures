@@ -1,6 +1,10 @@
 #include "World.h"
 
 World::World() :  m_currLvl(0), m_worldSize(2) {
+
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
+
     m_levelsInWorld = new Level[m_worldSize];
      for (int i = 0; i < 2; ++i) {
         m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
@@ -8,6 +12,10 @@ World::World() :  m_currLvl(0), m_worldSize(2) {
 }
 
 World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L) {
+
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
+
     m_levelsInWorld = new Level[L];
     for (int i = 0; i < L; ++i) {
         m_levelsInWorld[i] = Level(N, x, m, c, g, k);
@@ -22,9 +30,9 @@ World::~World() {
 }
 
 void World::nextLevel() {
-    if (m_currLvl != m_worldSize) {
-        m_levelsInWorld[m_currLvl].placePipe();
-    }
+    // if (m_currLvl != m_worldSize) {
+    //     m_levelsInWorld[m_currLvl].placePipe();
+    // }
 
     m_currLvl ++;
 
@@ -36,16 +44,12 @@ void World::nextLevel() {
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
 }
 
-char World::getCurrSpotChar(int* coords) {
-    int row = coords[0];
-    int column = coords[1];
+char World::getCurrSpotChar(int x, int y) {
+    int row = x;
+    int column = y;
 
     return m_levelsInWorld[m_currLvl].checkSpot(row, column);
 
-}
-
-int* World::getCurrSpot() {
-    return currSpot;
 }
 
 void World::displayGrid() {
