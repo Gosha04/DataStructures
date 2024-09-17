@@ -85,6 +85,7 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
 
     m_grid[b_row][b_column] = 'b';
 }
+
 //TODO Change this so mario cant start here and doesn't replace boss
 void Level::placePipe() {
     while (true) {
@@ -108,11 +109,11 @@ void Level::placeMario(int row, int column) {
 // int main(int argc, char const *argv[]) {
 //     Level level(5, 20,20,20,20,20);
 //     // level.populateGrid(4, 20, 26, 25, 25);
-//     int* marioPos = level.placeMario();
+//     level.placeMario(1,2);
 //     level.placePipe();
 //     level.displayGrid();
 
-//     std::cout << "Mario at position: " << marioPos[0] << marioPos[1] << std::endl;
+//     std::cout << "Mario at position: " << std::endl;
 
 //     return 0;
 // }

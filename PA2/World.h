@@ -2,6 +2,7 @@
 #define WORLD_H
 
 #include "Level.h"
+#include <string>
 #include <iostream>
 
 class World
@@ -22,7 +23,7 @@ public:
     void nextLevel();
     char getCurrSpotChar(int x, int y);
     // int* moveMario();
-    void displayGrid();
+    std::string displayGrid();
     int randomCoord();
 };
 
