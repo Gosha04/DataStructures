@@ -12,7 +12,7 @@ private:
     Level* m_levelsInWorld;
     int m_currLvl;
     int m_worldSize;
-    char currSpotChar;
+    //char currSpotChar;
     int m_Hrow;
     int m_Hcolumn;
 
@@ -23,8 +23,9 @@ public:
     void nextLevel();
     char getCurrSpotChar(int x, int y);
     // int* moveMario();
-    std::string displayGrid();
+    void displayGrid();
     int randomCoord();
+    Level getLevel(int index);
 };
 
 #endif

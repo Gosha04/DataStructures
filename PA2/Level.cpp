@@ -11,7 +11,7 @@ Level::Level(int n, int x, int m, int c, int g, int k) {
 }
 
 Level::~Level() {
-    this -> deleteGrid();
+    // this -> deleteGrid();
 }
 
 int Level::getN() {
@@ -26,12 +26,12 @@ char** Level::getGrid() {
     return m_grid;
 }
 
-void Level::deleteGrid() {
-    for (int i = 0; i < m_N; i++) {
-	    delete[] m_grid[i];
-    }
-    delete[] m_grid;
-}
+// void Level::deleteGrid() {
+//     for (int i = 0; i < m_N; i++) {
+// 	    delete[] m_grid[i];
+//     }
+//     delete[] m_grid;
+// }
 
 void Level::makeGrid(int n, int x, int m, int c, int g, int k) {
     m_N = n;
@@ -95,7 +95,7 @@ void Level::placePipe() {
             m_grid[p_row][p_column] = 'w';
             break;
         }
-        else {
+        else {  
             continue;
         }
     }
