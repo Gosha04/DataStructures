@@ -23,7 +23,7 @@ public:
     char checkSpot(int row, int column); // Checks the spot Mario is on and returns what is on that blocks
     void displayGrid(); // Displays the grid in char form
     void populateGrid(int x, int m, int c, int g, int k); // Populates each square of the level with a character
-    void placePipe(int row, int column); // Adds a warp pipe to the level
+    void placePipe(); // Adds a warp pipe to the level
     void placeMario(int row, int column); // Places Mario onto the grid
 };
 
