@@ -1,14 +1,12 @@
 #include "Level.h"
 
-Level::Level() {
-    m_N = 0;
-    m_grid = nullptr;
+Level::Level() : m_N(0), m_grid(nullptr) {
     std::srand(time(NULL));
 
 }
 
-Level::Level(int n) {
-   this -> makeGrid(n);
+Level::Level(int n, int x, int m, int c, int g, int k) {
+   this -> makeGrid(n, x, m, c, g, k);
    std::srand(time(NULL));
 }
 
@@ -35,18 +33,20 @@ void Level::deleteGrid() {
     delete[] m_grid;
 }
 
-void Level::makeGrid(int n) {
+void Level::makeGrid(int n, int x, int m, int c, int g, int k) {
     m_N = n;
     m_grid = new char* [m_N];
     for (int i = 0; i < m_N; ++i) {
         m_grid[i] = new char[m_N];   
     }
+
+    populateGrid(x, m, c, g, k);
 }
 
 void Level::displayGrid() {
     for(int i = 0; i < m_N; ++i) {
         for(int j = 0; j < m_N; ++j) {
-            std::cout << m_grid[i][j];
+            std::cout << m_grid[i][j] << " ";
         }
         std::cout << "\n";
     }
@@ -85,29 +85,23 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
 
     m_grid[b_row][b_column] = 'b';
 }
-
-void Level::addPipe() {
-    int w_row = (rand() % m_N);
-    int w_column = (rand() % m_N);
-
-    m_grid[w_row][w_column] = 'w';
+//TODO Change this so mario cant start here and doesn't replace boss
+void Level::placePipe(int row, int column) {
+    m_grid[row][column] = 'w';
 }
 
-void Level::placeMario() {
-    int H_row = (rand() % m_N);
-    int H_column = (rand() % m_N);
-
-    m_grid[H_row][H_column] = 'H';
+void Level::placeMario(int row, int column) {
+    m_grid[row][column] = 'H';
 }
 
-int main(int argc, char const *argv[]) {
-    Level level(5);
-    level.populateGrid(4, 20, 26, 25, 25);
-    level.placeMario();
-    level.addPipe();
-    level.displayGrid();
+// int main(int argc, char const *argv[]) {
+//     Level level(5, 20,20,20,20,20);
+//     // level.populateGrid(4, 20, 26, 25, 25);
+//     int* marioPos = level.placeMario();
+//     level.placePipe();
+//     level.displayGrid();
 
-    std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;
+//     std::cout << "Mario at position: " << marioPos[0] << marioPos[1] << std::endl;
 
-    return 0;
-}
+//     return 0;
+// }

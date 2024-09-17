@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build Level",  // Name of the task
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",  // Include debugging symbols
+          "${workspaceFolder}/Level.cpp",  // Source file
+          "-o",  // Output executable
+          "${workspaceFolder}/LevelExec"  // Name of the executable
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],  // Match compilation issues
+        "detail": "Build task for the Level class"
+      }
+    ]
+  }
+  

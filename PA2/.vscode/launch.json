@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    
+    "configurations": [
+      {
+        "name": "Debug Level",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/LevelExec",  // The executable built by the task
+        "args": [],  // No command-line arguments for now
+        "stopAtEntry": false,  // You can set this to true if you want to stop at main
+        "cwd": "${workspaceFolder}",  // Set current working directory
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/local/bin/gdb",  // Ensure GDB path is correct
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        "preLaunchTask": "build Level",  // Build task to run before debugging
+        "internalConsoleOptions": "openOnSessionStart",
+        "logging": {
+          "engineLogging": true,
+          "trace": true,
+          "traceResponse": true
+        }
+      }
+    ]
+  }
+  

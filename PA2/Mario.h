@@ -17,7 +17,7 @@ public:
     // default constructor
     Mario();
     // overloaded constructor which takes in a parameter for the number of lives
-    Mario(int L);
+    Mario(int life);
     // virtual destructor
     virtual ~Mario();
     // mutator function for lives
@@ -40,6 +40,8 @@ public:
     void addPow();
     // increases number of enemies killed
     void increaseEnemiesKilled();
+    // reset enemiesKilled
+    void resetEnemiesKilled();
 private:
     int m_lives;
     int m_numCoins;
