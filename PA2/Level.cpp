@@ -46,7 +46,7 @@ void Level::makeGrid(int n, int x, int m, int c, int g, int k) {
 void Level::displayGrid() {
     for(int i = 0; i < m_N; ++i) {
         for(int j = 0; j < m_N; ++j) {
-            std::cout << m_grid[i][j];
+            std::cout << m_grid[i][j] << " ";
         }
         std::cout << "\n";
     }
@@ -85,35 +85,23 @@ void Level::populateGrid(int x, int m, int c, int g, int k) {
 
     m_grid[b_row][b_column] = 'b';
 }
-
-void Level::placePipe() {
-    int w_row = (rand() % m_N);
-    int w_column = (rand() % m_N);
-
-    m_grid[w_row][w_column] = 'w';
+//TODO Change this so mario cant start here and doesn't replace boss
+void Level::placePipe(int row, int column) {
+    m_grid[row][column] = 'w';
 }
 
-int* Level::placeMario() {
-    int* rowColumn = new int[2];
-    int H_row = (rand() % m_N);
-    int H_column = (rand() % m_N);
-
-    m_grid[H_row][H_column] = 'H';
-
-    rowColumn[0] = H_row;
-    rowColumn[1] = H_column;
-
-    return rowColumn;
+void Level::placeMario(int row, int column) {
+    m_grid[row][column] = 'H';
 }
 
 // int main(int argc, char const *argv[]) {
-//     Level level(5);
-//     level.populateGrid(4, 20, 26, 25, 25);
-//     level.placeMario();
+//     Level level(5, 20,20,20,20,20);
+//     // level.populateGrid(4, 20, 26, 25, 25);
+//     int* marioPos = level.placeMario();
 //     level.placePipe();
 //     level.displayGrid();
 
-//     std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;
+//     std::cout << "Mario at position: " << marioPos[0] << marioPos[1] << std::endl;
 
 //     return 0;
 // }

@@ -50,8 +50,8 @@ bool Enemy::equals(const Enemy& enemy) {
            (m_EnemyPowLevel == enemy.m_EnemyPowLevel);
 }
 
-int main () {
-    Mario mario(5);
-    Enemy koopa(55 ,1);
-    koopa.battleMath();  
-}
+// int main () {
+//     Mario mario(5);
+//     Enemy koopa(55 ,1);
+//     koopa.battleMath();  
+// }

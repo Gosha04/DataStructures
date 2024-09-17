@@ -1,7 +1,10 @@
 #include "World.h"
 
-World::World() :  m_currLvl(0), m_worldSize(0) {
-    
+World::World() :  m_currLvl(0), m_worldSize(2) {
+    m_levelsInWorld = new Level[m_worldSize];
+     for (int i = 0; i < 2; ++i) {
+        m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
+    }
 }
 
 World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L) {
@@ -10,31 +13,34 @@ World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_
         m_levelsInWorld[i] = Level(N, x, m, c, g, k);
     }
 
-    currSpot = nextLevel(); 
-    currSpotChar = getCurrSpotChar(currSpot);
+    //currSpot = m_levelsInWorld[0].placeMario(); 
+    //currSpotChar = getCurrSpotChar(currSpot);
 }
 
 World::~World() {
-
+    delete[] m_levelsInWorld;
 }
 
-int* World::nextLevel() {
+void World::nextLevel() {
     if (m_currLvl != m_worldSize) {
-        m_levelsInWorld[m_currLvl - 1].placePipe();
+        m_levelsInWorld[m_currLvl].placePipe();
     }
 
     m_currLvl ++;
 
-    m_levelsInWorld[m_currLvl - 1].displayGrid();
+    m_levelsInWorld[m_currLvl].displayGrid();
 
-    return m_levelsInWorld[m_currLvl - 1].placeMario();
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
+
+    m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
 }
 
 char World::getCurrSpotChar(int* coords) {
     int row = coords[0];
     int column = coords[1];
 
-    return m_levelsInWorld[m_currLvl - 1].checkSpot(row, column);
+    return m_levelsInWorld[m_currLvl].checkSpot(row, column);
 
 }
 
@@ -43,12 +49,19 @@ int* World::getCurrSpot() {
 }
 
 void World::displayGrid() {
-    m_levelsInWorld[m_currLvl - 1].displayGrid();
+    m_levelsInWorld[m_currLvl].displayGrid();
+}
+
+int World::randomCoord() {
+    int coord = (rand() % m_levelsInWorld[m_currLvl].getN());
+    return coord;
 }
 
 int main(int argc, char const *argv[])
 {
-    World world(3, 5, 4, 20, 26, 25, 25);
-    world.displayGrid();
+    std::cout << "Test";
+    World world;
+    std::cout << "Test2";
+    // world.displayGrid();
     return 0;
 }
