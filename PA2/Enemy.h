@@ -20,7 +20,10 @@ public:
     // returns the enemys power level
     int getEnemyPowLevel();
     // return true if mario wins
-    bool battle();
+    bool battleMath();
+    // check if two enemies are equal
+    bool equals(const Enemy& enemy);
+    
 private:
     int m_MarioWinChance;
     int m_EnemyPowLevel;
