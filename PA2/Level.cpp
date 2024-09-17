@@ -5,8 +5,8 @@ Level::Level() : m_N(0), m_grid(nullptr) {
 
 }
 
-Level::Level(int n) {
-   this -> makeGrid(n);
+Level::Level(int n, int x, int m, int c, int g, int k) {
+   this -> makeGrid(n, x, m, c, g, k);
    std::srand(time(NULL));
 }
 
@@ -33,12 +33,14 @@ void Level::deleteGrid() {
     delete[] m_grid;
 }
 
-void Level::makeGrid(int n) {
+void Level::makeGrid(int n, int x, int m, int c, int g, int k) {
     m_N = n;
     m_grid = new char* [m_N];
     for (int i = 0; i < m_N; ++i) {
         m_grid[i] = new char[m_N];   
     }
+
+    populateGrid(x, m, c, g, k);
 }
 
 void Level::displayGrid() {
@@ -91,25 +93,27 @@ void Level::placePipe() {
     m_grid[w_row][w_column] = 'w';
 }
 
-char Level::placeMario() {
+int* Level::placeMario() {
+    int* rowColumn = new int[2];
     int H_row = (rand() % m_N);
     int H_column = (rand() % m_N);
 
-    char currSpot = m_grid[H_row][H_column];
-
     m_grid[H_row][H_column] = 'H';
 
-    return currSpot;
+    rowColumn[0] = H_row;
+    rowColumn[1] = H_column;
+
+    return rowColumn;
 }
 
-int main(int argc, char const *argv[]) {
-    Level level(5);
-    level.populateGrid(4, 20, 26, 25, 25);
-    level.placeMario();
-    level.placePipe();
-    level.displayGrid();
+// int main(int argc, char const *argv[]) {
+//     Level level(5);
+//     level.populateGrid(4, 20, 26, 25, 25);
+//     level.placeMario();
+//     level.placePipe();
+//     level.displayGrid();
 
-    std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;
+//     std::cout << "Item at position: " << level.checkSpot(3,2) << std::endl;
 
-    return 0;
-}
+//     return 0;
+// }

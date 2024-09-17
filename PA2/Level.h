@@ -13,18 +13,18 @@ private:
     
 public:
     Level(); // Def constructor
-    Level(int n); // Overloaded constructor
+    Level(int n, int x, int m, int c, int g, int k); // Overloaded constructor
     ~Level(); // Def Destructor
     int getN(); // Getter for N
     void setN(int n); // Setter for N
     char** getGrid(); // Getter for grid
     void deleteGrid(); // Deletes grid
-    void makeGrid(int n); // Makes a new grid, useful for new Level
+    void makeGrid(int n, int x, int m, int c, int g, int k); // Makes a new grid, useful for new Level
     char checkSpot(int row, int column); // Checks the spot Mario is on and returns what is on that blocks
     void displayGrid(); // Displays the grid in char form
     void populateGrid(int x, int m, int c, int g, int k); // Populates each square of the level with a character
     void placePipe(); // Adds a warp pipe to the level
-    char placeMario(); // Places Mario onto the grid
+    int* placeMario(); // Places Mario onto the grid
 };
 
 #endif

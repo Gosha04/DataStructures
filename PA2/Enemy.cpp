@@ -45,6 +45,11 @@ bool Enemy::battleMath() {
     }
 }
 
+bool Enemy::equals(const Enemy& enemy) {
+    return (m_MarioWinChance == enemy.m_MarioWinChance) &&
+           (m_EnemyPowLevel == enemy.m_EnemyPowLevel);
+}
+
 int main () {
     Mario mario(5);
     Enemy koopa(55 ,1);

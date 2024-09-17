@@ -21,6 +21,9 @@ public:
     int getEnemyPowLevel();
     // return true if mario wins
     bool battleMath();
+    // check if two enemies are equal
+    bool equals(const Enemy& enemy);
+    
 private:
     int m_MarioWinChance;
     int m_EnemyPowLevel;

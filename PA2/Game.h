@@ -13,13 +13,16 @@ private:
     Enemy m_goomba;
     Enemy m_bowser;
     Mario m_mario;
-    char currSpot;
+    char currSpotChar;
+    
 public:
     Game();
     Game(int L, int N, int life);
     ~Game();
     void interact();
     void battle(Enemy enemy);
+    void warp();
+    void displayGrid();
 };
 
 #endif
