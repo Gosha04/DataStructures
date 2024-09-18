@@ -26,7 +26,7 @@ public:
     // int* moveMario();
     void displayGrid();
     int randomCoord();
-    void move();
+    void move(); // moves mario
     Level getLevel(int index);
 };
 
