@@ -15,6 +15,7 @@ private:
     //char currSpotChar;
     int m_Hrow;
     int m_Hcolumn;
+    int m_N;
 
 public:
     World ();
@@ -25,6 +26,7 @@ public:
     // int* moveMario();
     void displayGrid();
     int randomCoord();
+    void move();
     Level getLevel(int index);
 };
 
