@@ -25,6 +25,11 @@ World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_
 }
 
 World::~World() {
+    for (int i = 0; i < m_worldSize; ++i) {
+        for (int j = 0; j < m_levelsInWorld[i].getN(); ++j) {
+            delete[] m_levelsInWorld[i].getGrid()[j];
+        }
+    }
     delete[] m_levelsInWorld;
 }
 
