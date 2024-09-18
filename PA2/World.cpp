@@ -99,6 +99,8 @@ void World::nextLevel() {
             continue;
         }
     }
+
+    // currSpotChar = getCurrSpotChar(currSpot);
 }
 
 // shows what will be on the spot that mario will be moving to, to see how to interact
