@@ -181,5 +181,11 @@ int main(int argc, char const *argv[])
     world.move();
 
     world.displayGrid();
+
+    world.move();
+
+    world.displayGrid();
+
+    //world.move();
     return 0;
 }
