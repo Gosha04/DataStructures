@@ -3,7 +3,7 @@
 
 // default constructor
 // generates a world with 2 levels with 5 rows in each
-World::World() :  m_currLvl(0), m_worldSize(2) {
+World::World() :  m_currLvl(0), m_worldSize(2), m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(1)  {
     // creates an array of levels
     m_levelsInWorld = new Level[m_worldSize];
     // loops through all the levels except the last one
@@ -36,7 +36,8 @@ World::World() :  m_currLvl(0), m_worldSize(2) {
 }
 
 // generates a world with the number of levels passed in
-World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L) {
+World::World(int L, int N,int life, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L), 
+m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     m_levelsInWorld = new Level[m_worldSize];
     // loops through all the levels except the last one
      for (int i = 0; i < m_worldSize - 1; ++i) {
@@ -127,6 +128,52 @@ int World::randomCoord() {
     return coord;
 }
 
+void World::battle(Enemy enemy) {
+    if (enemy.battleMath() == false) {
+        if (m_mario.getPowLevel() == 0) {
+            m_mario.resetEnemiesKilled();
+            }
+        m_mario.decreasePowLevel(m_goomba.getEnemyPowLevel());
+        } else {
+            m_mario.increaseEnemiesKilled();
+            if (enemy.equals(m_bowser)) {
+                warp();
+            }
+        }
+}
+
+void World::warp() {
+    currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn); 
+}
+
+void World::interact() {
+    switch (currSpotChar) {
+        case 'c':
+            m_mario.addCoin();
+            break;
+        case 'm':
+            m_mario.addPow();
+            break;
+        case 'g':
+            battle(m_goomba);
+            // Movement
+            break;
+        case 'k':
+            battle(m_koopa);
+            // Movement
+            break;
+        case 'b':
+            battle(m_bowser);
+            // Warp
+            break;
+        case 'w':
+            warp();
+            break;
+        default:
+            break;
+    }
+}
+
 // added move
 void World::move() {
     m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
@@ -168,11 +215,12 @@ void World::move() {
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
 }
 
+int getM_Hcolumn();
 
 int main(int argc, char const *argv[])
 {
     std::cout << "Test";
-    World world(3, 5, 20, 20, 20, 20, 20);
+    World world(3, 5, 3, 20, 20, 20, 20, 20);
     std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
     std::cout << "Test2\n";
     

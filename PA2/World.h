@@ -2,6 +2,8 @@
 #define WORLD_H
 
 #include "Level.h"
+#include "Enemy.h"
+#include "Mario.h"
 #include <string>
 #include <iostream>
 #include <random>
@@ -13,14 +15,17 @@ private:
     Level* m_levelsInWorld;
     int m_currLvl;
     int m_worldSize;
-    //char currSpotChar;
     int m_Hrow;
     int m_Hcolumn;
-    int m_N;
+    Enemy m_koopa;
+    Enemy m_goomba;
+    Enemy m_bowser;
+    Mario m_mario;
+    char currSpotChar;
 
 public:
     World ();
-    World(int L, int N, int x, int m, int c, int g, int k);
+    World(int L, int N, int life, int x, int m, int c, int g, int k);
     ~World();
     void nextLevel();
     char getCurrSpotChar(int x, int y);
@@ -29,6 +34,11 @@ public:
     int randomCoord();
     void move(); // moves mario
     Level getLevel(int index);
+
+    // imported from Game
+    void interact();
+    void battle(Enemy enemy);
+    void warp();
 };
 
 #endif

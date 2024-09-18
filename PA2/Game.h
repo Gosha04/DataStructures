@@ -17,7 +17,7 @@ private:
     
 public:
     Game();
-    Game(int L, int N, int life);
+    Game(int L, int N, int life, int x, int m, int c, int g, int k);
     ~Game();
     void interact();
     void battle(Enemy enemy);

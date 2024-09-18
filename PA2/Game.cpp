@@ -1,11 +1,12 @@
 #include "Game.h"
 
-Game::Game() : m_world(0, 0), m_goomba(), m_mario() {
+Game::Game() : m_world(1, 5, 20, 20, 20, 20, 20), m_goomba(), m_mario() {
 
 }
 
-Game::Game(int L, int N, int life) : m_world(L, N), m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
-    currSpotChar = m_world.getCurrSpotChar(m_world.getCurrSpot()); 
+Game::Game(int L, int N, int life, int x, int m, int c, int g, int k) : m_world(L, N, x, m, c, g, k),
+m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
+    currSpotChar = m_world.getCurrSpotChar(m_world.getM_Hrow(), m_world.getM_Hcolumn()); 
 }
 
 Game::~Game() {
