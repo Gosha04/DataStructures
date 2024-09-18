@@ -3,6 +3,7 @@
 
 // default constructor
 World::World() :  m_currLvl(0), m_worldSize(2) {
+<<<<<<< HEAD
     // generates a world with 2 levels with 5 rows in each
     m_N = 5;
     // creates an array of levels
@@ -32,11 +33,21 @@ World::World() :  m_currLvl(0), m_worldSize(2) {
         else {
             continue;
         }
+=======
+
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
+
+    m_levelsInWorld = new Level[m_worldSize];
+     for (int i = 0; i < 2; ++i) {
+        m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
+>>>>>>> bc7a00f (git commit)
     }
     srand(time(NULL));
 }
 
 World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L) {
+<<<<<<< HEAD
     // generates a world with the number of levels passed in
     m_N = N;
     m_levelsInWorld = new Level[m_worldSize];
@@ -67,6 +78,18 @@ World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_
         }
     }
     srand(time(NULL));
+=======
+
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
+
+    m_levelsInWorld = new Level[L];
+    for (int i = 0; i < L; ++i) {
+        m_levelsInWorld[i] = Level(N, x, m, c, g, k);
+    }
+
+    // currSpotChar = getCurrSpotChar(currSpot);
+>>>>>>> bc7a00f (git commit)
 }
 
 World::~World() {
@@ -76,7 +99,14 @@ World::~World() {
 
 // changes the current level that mario is on
 void World::nextLevel() {
+<<<<<<< HEAD
     // increments the currLev variable
+=======
+    if (m_currLvl != m_worldSize) {
+        m_levelsInWorld[m_currLvl].placePipe();
+    }
+
+>>>>>>> bc7a00f (git commit)
     m_currLvl ++;
 
     // prints out the current level that mario is on
