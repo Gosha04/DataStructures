@@ -138,6 +138,8 @@ void World::battle(Enemy enemy) {
             m_mario.increaseEnemiesKilled();
             if (enemy.equals(m_bowser)) {
                 warp();
+            } else if (enemy.equals(m_koopa)) {
+                
             }
         }
 }
