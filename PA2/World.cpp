@@ -128,42 +128,46 @@ int World::randomCoord() {
 }
 
 // added move
+void World::move() {
+    m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
+    int newRow = m_Hrow;
+    int newColumn = m_Hcolumn;
 
-// void World::move() {
-//     int oldRow = m_Hrow;
-//     int oldColumn = m_Hcolumn;
-//     int newRow;
-//     int newColumn;
-
-//     // generates a random number between 0-3
-//     int direction = (rand() % 4);
-//     // if direction is 0 move up
-//     switch (direction) {
-//     case 0:
-//         newRow = (m_Hrow - 1 + m_N) % m_N;
-//         newColumn = m_Hcolumn;
-//         std::cout << "Mario moved up" << std::endl;
-
-//     // if direction is 1 move right
-//     case 1:
-//         newRow = m_Hrow;
-//         newColumn = (m_Hcolumn + 1) % m_N;
-//         std::cout << "Mario moved right" << std::endl;
+    // generates a random number between 0-3
+    int direction = (rand() % 4);
     
-//     // if direction is 2 move down
-//     case 2:
-//         newRow = (m_Hrow + 1) % m_N;
-//         newColumn = m_Hrow;
-//         std::cout << "Mario moved down" << std::endl;
+    switch (direction) {
+    // Move up
+    case 0:
+        newRow = (m_Hrow - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
+        std::cout << "Mario moved up" << std::endl;
+        break;
+    
+    // Move right
+    case 1:
+        newColumn = (m_Hcolumn + 1) % m_levelsInWorld[m_currLvl].getN();
+        std::cout << "Mario moved right" << std::endl;
+        break;
+    
+    // Move down
+    case 2:
+        newRow = (m_Hrow + 1) % m_levelsInWorld[m_currLvl].getN();
+        std::cout << "Mario moved down" << std::endl;
+        break;
+    
+    // Move left
+    case 3:
+        newColumn = (m_Hcolumn - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
+        std::cout << "Mario moved left" << std::endl;
+        break;
+    }
 
-//     // if direction is 3 move left
-//     case 3:
-//         newRow = m_Hrow;
-//         newColumn = (m_Hcolumn - 1 + m_N) % m_N;
-//         std::cout << "Mario moved left" << std::endl;
-//     }
+    // Update Mario's position
+    m_Hrow = newRow;
+    m_Hcolumn = newColumn;
+    m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+}
 
-// }
 
 int main(int argc, char const *argv[])
 {
@@ -174,6 +178,8 @@ int main(int argc, char const *argv[])
     
     world.displayGrid();
 
-    //world.move();
+    world.move();
+
+    world.displayGrid();
     return 0;
 }

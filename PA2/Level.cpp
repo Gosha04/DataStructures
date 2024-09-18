@@ -69,6 +69,11 @@ char Level::checkSpot(int row, int column) {
     
 }
 
+void Level::clearSpot(int row, int column) {
+    m_grid[row][column] = 'x';
+    
+}
+
 // populates the grid with the passed in probabilities
 void Level::populateGrid(int x, int m, int c, int g, int k) {
     // loops through the row
