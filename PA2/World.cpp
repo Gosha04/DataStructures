@@ -16,6 +16,12 @@ World::World() :  m_currLvl(0), m_worldSize(2), m_goomba(80, 1), m_koopa(65, 1),
     // generates the last level and does not add a pipe to it
     m_levelsInWorld[m_worldSize-1] = Level(5, 20, 20, 20, 20, 20);
 
+    // generate the mario and enemy objects
+    m_mario = Mario();
+    m_bowser = Enemy(50,2);
+    m_koopa = Enemy(65,1);
+    m_goomba = Enemy(80,1);
+
     // loops through utill mario is placed
     while (true) {
         // generates two random points within the grid
@@ -48,6 +54,12 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     }
     // generates the last level and does not add a pipe to it
     m_levelsInWorld[m_worldSize-1] = Level(N, x, m, c, g, k);
+
+    // Generate the mario and enemy objects
+    m_mario = Mario(life);
+    m_bowser = Enemy(50,2);
+    m_koopa = Enemy(65,1);
+    m_goomba = Enemy(80,1);
 
     // loops through utill mario is placed
     while (true) {
