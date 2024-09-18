@@ -1,6 +1,7 @@
 #include "World.h"
 #include <random>
 
+// default constructor
 World::World() :  m_currLvl(0), m_worldSize(2) {
     // generates a world with 2 levels with 5 rows in each
     m_N = 5;

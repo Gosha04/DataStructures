@@ -2,7 +2,7 @@
 #include <random>
 #include <iostream>
 
-// default constructor that makes it imposible for mario to lose
+// Default constructor that makes it imposible for mario to lose
 Enemy::Enemy() {
     m_MarioWinChance = 100;
     m_EnemyPowLevel = 1;

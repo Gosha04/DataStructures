@@ -123,7 +123,7 @@ void Level::placePipe() {
     
 }
 
-// places mario on the passed in row and column
+// places mario on the row and column that were passed in
 void Level::placeMario(int row, int column) {
     m_grid[row][column] = 'H';
 }

@@ -18,7 +18,7 @@ Mario::Mario(int life) {
 
 Mario::~Mario() {}
 
-// returns marios nnumber of lives
+// returns marios number of lives
 int Mario::getLives() {
     return m_lives;
 }
