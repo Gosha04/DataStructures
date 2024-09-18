@@ -232,9 +232,13 @@ void World::move() {
 
 void World::play() {
     while (true) {
+        std::cout << "Test\n";
         displayGrid();
         interact();
         move();
+        displayGrid();
+        std::cout << "Test\n";
+        break;
     }
 }
 
@@ -245,27 +249,29 @@ int main(int argc, char const *argv[])
     std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
     std::cout << "Test2\n";
     
-    world.displayGrid();
+    world.play();
 
-    world.move();
+    // world.displayGrid();
 
-    std::cout << "Test1\n";
+    // world.move();
 
-    world.displayGrid();
+    // std::cout << "Test1\n";
 
-    world.move();
+    // world.displayGrid();
 
-    std::cout << "Test2\n";
+    // world.move();
 
-    world.displayGrid();
+    // std::cout << "Test2\n";
 
-    std::cout << "Test2.5\n";
+    // world.displayGrid();
 
-    world.warp();
+    // std::cout << "Test2.5\n";
 
-    std::cout << "Test3\n";
+    // world.warp();
 
-    world.displayGrid();
+    // std::cout << "Test3\n";
+
+    // world.displayGrid();
 
     return 0;
 }
