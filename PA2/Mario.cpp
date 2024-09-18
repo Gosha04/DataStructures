@@ -1,5 +1,6 @@
 #include "Mario.h"
 
+// default mario has 5 lives
 Mario::Mario() {
     m_lives = 5;
     m_powLevel = 0;
@@ -7,6 +8,7 @@ Mario::Mario() {
     m_enemiesKilledOnCurrentLife = 0;
 }
 
+// creates a mario with the passed in number of lives
 Mario::Mario(int life) {
     m_lives = life;
     m_powLevel = 0;
@@ -16,6 +18,7 @@ Mario::Mario(int life) {
 
 Mario::~Mario() {}
 
+// returns marios nnumber of lives
 int Mario::getLives() {
     return m_lives;
 }
@@ -28,22 +31,29 @@ void Mario::decreaseLives() {
     m_powLevel = 0;
 }
 
+// returns marios number of coins
 int Mario::getNumCoins() {
     return m_numCoins;
 }
 
+// allow to set the number of coins
 void Mario::setNumCoins(int coins) {
     m_numCoins = coins;
 }
 
+// returns marios power level
 int Mario::getPowLevel() {
     return m_powLevel;
 }
 
+// decreases marios power level by the power level of the enemy
 void Mario::decreasePowLevel(int powLevel) {
+    // if marios power level is greater or equal to his enemy
     if (m_powLevel >= powLevel) {
+        // decrease his power level by the enemys power level
         m_powLevel -= powLevel;
     }
+    // if the enemys power level is greater than marios, mario loses a lief
     else {
         decreaseLives();
     }
@@ -58,12 +68,11 @@ void Mario::resetCoins() {
 void Mario::addCoin() {
     m_numCoins += 1;
 }
-// increases Marios power level
-// If power level is already at 2 it resets it back to 2
+
+// if marios power level is less than 2 marios power level increases
 void Mario::addPow() {
-    m_powLevel += 1;
     if (m_powLevel < 2) {
-        m_powLevel = 2;
+        m_powLevel++;
     }
 }
 // changes the number of enemies mario has killed on current life
