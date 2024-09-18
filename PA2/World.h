@@ -4,6 +4,7 @@
 #include "Level.h"
 #include <string>
 #include <iostream>
+#include <random>
 
 class World
 
@@ -25,6 +26,7 @@ public:
     // int* moveMario();
     void displayGrid();
     int randomCoord();
+    void move(); // moves mario
     Level getLevel(int index);
 };
 
