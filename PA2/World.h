@@ -26,7 +26,6 @@ private:
 public:
     World ();
     World(int L, int N, int life, int x, int m, int c, int g, int k);
-    World(int L, int N, int life, int x, int m, int c, int g, int k);
     ~World();
     void nextLevel();
     char getCurrSpotChar(int x, int y);
@@ -35,10 +34,6 @@ public:
     int randomCoord();
     void move(); // moves mario
     Level getLevel(int index);
-
-    // imported from Game
-
-    // imported from Game
 
     // imported from Game
     void interact();
