@@ -2,46 +2,26 @@
 
 World::World() :  m_currLvl(0), m_worldSize(2) {
 
-    m_levelsInWorld = new Level[m_worldSize];
-     for (int i = 0; i < m_worldSize - 1; ++i) {
-        m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
-        m_levelsInWorld[i].placePipe();
-    }
-    m_levelsInWorld[m_worldSize-1].placePipe();
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
 
-    while (true) {
-        m_Hrow = randomCoord();
-        m_Hcolumn = randomCoord();
-        if ((m_levelsInWorld[m_currLvl][m_Hrow][m_Hcolumn] != 'b') && (m_levelsInWorld[m_currLvl][m_Hrow][m_Hcolumn] != 'w')) {
-            m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
-            break;
-        }
-        else {
-            continue;
-        }
+    m_levelsInWorld = new Level[m_worldSize];
+     for (int i = 0; i < 2; ++i) {
+        m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
     }
 }
 
 World::World(int L, int N, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L) {
 
-    m_levelsInWorld = new Level[m_worldSize];
-     for (int i = 0; i < m_worldSize - 1; ++i) {
-        m_levelsInWorld[i] = Level(5, 20, 20, 20, 20, 20);
-        m_levelsInWorld[i].placePipe();
-    }
-    m_levelsInWorld[m_worldSize-1].placePipe();
+    m_Hrow = randomCoord();
+    m_Hcolumn = randomCoord();
 
-    while (true) {
-        m_Hrow = randomCoord();
-        m_Hcolumn = randomCoord();
-        if ((m_levelsInWorld[m_currLvl][m_Hrow][m_Hcolumn] != 'b') && (m_levelsInWorld[m_currLvl][m_Hrow][m_Hcolumn] != 'w')) {
-            m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
-            break;
-        }
-        else {
-            continue;
-        }
+    m_levelsInWorld = new Level[L];
+    for (int i = 0; i < L; ++i) {
+        m_levelsInWorld[i] = Level(N, x, m, c, g, k);
     }
+
+    // currSpotChar = getCurrSpotChar(currSpot);
 }
 
 World::~World() {
@@ -54,6 +34,9 @@ World::~World() {
 }
 
 void World::nextLevel() {
+    if (m_currLvl != m_worldSize) {
+        m_levelsInWorld[m_currLvl].placePipe();
+    }
 
     m_currLvl ++;
 
