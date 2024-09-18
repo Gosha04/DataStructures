@@ -1,5 +1,4 @@
 #include "World.h"
-#include <random>
 
 // default constructor
 // generates a world with 2 levels with 5 rows in each
@@ -150,12 +149,17 @@ void World::battle(Enemy enemy) {
             m_mario.increaseEnemiesKilled();
             if (enemy.equals(m_bowser)) {
                 warp();
+            } else {
+                m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
             }
         }
 }
 
 void World::warp() {
+    nextLevel();
     currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn); 
+    m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+    std::cout << "Mario warped!\n";
 }
 
 void World::interact() {
@@ -188,7 +192,6 @@ void World::interact() {
 
 // added move
 void World::move() {
-    m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
     int newRow = m_Hrow;
     int newColumn = m_Hcolumn;
 
@@ -227,7 +230,13 @@ void World::move() {
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
 }
 
-int getM_Hcolumn();
+void World::play() {
+    while (true) {
+        displayGrid();
+        interact();
+        move();
+    }
+}
 
 int main(int argc, char const *argv[])
 {
@@ -240,12 +249,23 @@ int main(int argc, char const *argv[])
 
     world.move();
 
+    std::cout << "Test1\n";
+
     world.displayGrid();
 
     world.move();
 
+    std::cout << "Test2\n";
+
     world.displayGrid();
 
-    //world.move();
+    std::cout << "Test2.5\n";
+
+    world.warp();
+
+    std::cout << "Test3\n";
+
+    world.displayGrid();
+
     return 0;
 }

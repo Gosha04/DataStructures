@@ -33,6 +33,7 @@ public:
     void displayGrid();
     int randomCoord();
     void move(); // moves mario
+    void play();
     Level getLevel(int index);
 
     // imported from Game
