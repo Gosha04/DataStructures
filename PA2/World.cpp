@@ -140,6 +140,52 @@ int World::randomCoord() {
     return coord;
 }
 
+void World::battle(Enemy enemy) {
+    if (enemy.battleMath() == false) {
+        if (m_mario.getPowLevel() == 0) {
+            m_mario.resetEnemiesKilled();
+            }
+        m_mario.decreasePowLevel(m_goomba.getEnemyPowLevel());
+        } else {
+            m_mario.increaseEnemiesKilled();
+            if (enemy.equals(m_bowser)) {
+                warp();
+            }
+        }
+}
+
+void World::warp() {
+    currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn); 
+}
+
+void World::interact() {
+    switch (currSpotChar) {
+        case 'c':
+            m_mario.addCoin();
+            break;
+        case 'm':
+            m_mario.addPow();
+            break;
+        case 'g':
+            battle(m_goomba);
+            // Movement
+            break;
+        case 'k':
+            battle(m_koopa);
+            // Movement
+            break;
+        case 'b':
+            battle(m_bowser);
+            // Warp
+            break;
+        case 'w':
+            warp();
+            break;
+        default:
+            break;
+    }
+}
+
 // added move
 void World::move() {
     m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
