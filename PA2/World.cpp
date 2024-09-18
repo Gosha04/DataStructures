@@ -139,11 +139,12 @@ int World::randomCoord() {
     return coord;
 }
 
-void World::battle(Enemy enemy) {
+bool World::battle(Enemy enemy) {
     if (enemy.battleMath() == false) {
         if (m_mario.getPowLevel() == 0) {
             m_mario.resetEnemiesKilled();
             }
+        return 1;
         m_mario.decreasePowLevel(m_goomba.getEnemyPowLevel());
         } else {
             m_mario.increaseEnemiesKilled();
@@ -152,6 +153,7 @@ void World::battle(Enemy enemy) {
             } else {
                 m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
             }
+            return 0;
         }
 }
 
@@ -179,7 +181,9 @@ void World::interact() {
             // Movement
             break;
         case 'b':
-            battle(m_bowser);
+            while (m_mario.getLives() > 0 && battle(m_bowser) == 0) {
+                continue;
+            }
             // Warp
             break;
         case 'w':
@@ -192,6 +196,9 @@ void World::interact() {
 
 // added move
 void World::move() {
+    if (getCurrSpotChar(m_Hrow, m_Hcolumn) != 'k' && getCurrSpotChar(m_Hrow, m_Hcolumn) != 'g') {
+        m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
+    }
     int newRow = m_Hrow;
     int newColumn = m_Hcolumn;
 
@@ -231,7 +238,7 @@ void World::move() {
 }
 
 void World::play() {
-    while (true) {
+    while (m_mario.getLives() > 0 && m_currLvl <= m_worldSize) {
         std::cout << "Test\n";
         displayGrid();
         interact();

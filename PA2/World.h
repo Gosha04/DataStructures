@@ -29,7 +29,6 @@ public:
     ~World();
     void nextLevel();
     char getCurrSpotChar(int x, int y);
-    // int* moveMario();
     void displayGrid();
     int randomCoord();
     void move(); // moves mario
@@ -38,7 +37,7 @@ public:
 
     // imported from Game
     void interact();
-    void battle(Enemy enemy);
+    bool battle(Enemy enemy);
     void warp();
 };
 
