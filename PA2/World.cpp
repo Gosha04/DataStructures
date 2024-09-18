@@ -127,6 +127,8 @@ int World::randomCoord() {
     return coord;
 }
 
+// added move
+
 // void World::move() {
 //     int oldRow = m_Hrow;
 //     int oldColumn = m_Hcolumn;
