@@ -16,6 +16,7 @@ private:
     //char currSpotChar;
     int m_Hrow;
     int m_Hcolumn;
+    int m_N;
 
 public:
     World ();
