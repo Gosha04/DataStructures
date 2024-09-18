@@ -22,6 +22,11 @@ private:
     Enemy m_bowser;
     Mario m_mario;
     char currSpotChar;
+    Enemy m_koopa;
+    Enemy m_goomba;
+    Enemy m_bowser;
+    Mario m_mario;
+    char currSpotChar;
 
 public:
     World ();
@@ -34,6 +39,8 @@ public:
     int randomCoord();
     void move(); // moves mario
     Level getLevel(int index);
+
+    // imported from Game
 
     // imported from Game
     void interact();
