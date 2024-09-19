@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <random>
+#include <fstream>
 
 class World
 
@@ -22,6 +23,7 @@ private:
     Enemy m_bowser;
     Mario m_mario;
     char currSpotChar;
+    std::ofstream outFile;
 
 public:
     World ();
