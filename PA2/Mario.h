@@ -1,13 +1,10 @@
 /*
-In our simulation, Mario starts with a number of lives, V, which will be provided at runtime.
-Mario also has the ability to collect coins. He starts with 0 coins. For every 20 coins collected,
-he earns an extra life (and the number of coins resets to 0). At any moment, Mario is in one of 3
-power levels, PL0, PL1, and PL2. PL0 is the weakest and PL2 is the strongest. Mario can increase
-power levels by coming in contact with a mushroom (a “magic” mushroom), and loses a power level if
-hurt by an enemy. More on that later.
+Joshua Vaysman || Dylan Barlava
+2449656 || 2428584
+vaysman@chapman.edu || dbarlava@chapman.edu
+CPSC 350-02
+PA2
 */
-
-// This is main
 
 #ifndef MARIO_H
 #define MARIO_H
