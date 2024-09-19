@@ -273,7 +273,9 @@ void World::move() {
 void World::play() {
     outFile << "Current Character " << currSpotChar << " \n";
     int moves = 0;
+
     while (m_mario.getLives() > 0 && m_currLvl <= m_worldSize - 1 && moves <= 15) {
+
         outFile << "Test\n";
         displayGrid();
         move();
