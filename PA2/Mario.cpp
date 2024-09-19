@@ -67,6 +67,10 @@ void Mario::resetCoins() {
 // add a coin to marios total when he lands on the spot
 void Mario::addCoin() {
     m_numCoins += 1;
+    if (m_numCoins == 20) {
+        m_numCoins = 0;
+        m_lives++;
+    }
 }
 
 // if marios power level is less than 2 marios power level increases
