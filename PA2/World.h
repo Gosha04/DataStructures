@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman || Dylan Barlava
+2449656 || 2428584
+vaysman@chapman.edu || dbarlava@chapman.edu
+CPSC 350-02
+PA2
+*/
+
 #ifndef WORLD_H
 #define WORLD_H
 
