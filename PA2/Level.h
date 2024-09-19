@@ -25,7 +25,7 @@ public:
     void displayGrid(); // Displays the grid in char form
     void populateGrid(int x, int m, int c, int g, int k); // Populates each square of the level with a character
     void placePipe(); // Adds a warp pipe to the level
-    void placeMario(int row, int column); // Places Mario onto the grid
+    char placeMario(int row, int column); // Places Mario onto the grid
 };
 
 #endif

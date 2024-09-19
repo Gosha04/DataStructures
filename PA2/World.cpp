@@ -21,12 +21,13 @@ World::World() :  m_currLvl(0), m_worldSize(2), m_goomba(80, 1), m_koopa(65, 1),
     m_koopa = Enemy(65,1);
     m_goomba = Enemy(80,1);
 
-    // loops through utill mario is placed
+    // loops through until mario is placed
     while (true) {
         // generates two random points within the grid
         m_Hrow = randomCoord();
         m_Hcolumn = randomCoord();
-        // checks to wee if mario is being placed on the warp pipe or on bowser
+        currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
+        // checks to see if mario is being placed on the warp pipe or on bowser
         if ((m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'b') && 
         (m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'w')) {
             // if he is not it places pario and breaks out of the loop
@@ -68,8 +69,8 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
         // checks to wee if mario is being placed on the warp pipe or on bowser
         if ((m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'b') && 
         (m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'w')) {
-            // if he is not it places pario and breaks out of the loop
-            m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+            // if he is not it places mario and breaks out of the loop
+            currSpotChar = m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
             break;
         }
         else {
@@ -141,12 +142,14 @@ int World::randomCoord() {
 
 bool World::battle(Enemy enemy) {
     if (enemy.battleMath() == false) {
+        std::cout << "Lives: " << m_mario.getLives() << " Lose";
         if (m_mario.getPowLevel() == 0) {
             m_mario.resetEnemiesKilled();
             }
         return 1;
         m_mario.decreasePowLevel(m_goomba.getEnemyPowLevel());
         } else {
+            std::cout << "Lives: " << m_mario.getLives() << " Win";
             m_mario.increaseEnemiesKilled();
             if (enemy.equals(m_bowser)) {
                 warp();
@@ -167,68 +170,84 @@ void World::warp() {
 void World::interact() {
     switch (currSpotChar) {
         case 'c':
+            std::cout << "Coin";
             m_mario.addCoin();
             break;
         case 'm':
+            std::cout << "Mushroom";
             m_mario.addPow();
             break;
         case 'g':
+            std::cout << "Goomba";
             battle(m_goomba);
             // Movement
             break;
         case 'k':
+            std::cout << "Koopa";
             battle(m_koopa);
             // Movement
             break;
         case 'b':
+            std::cout << "Boss";
             while (m_mario.getLives() > 0 && battle(m_bowser) == 0) {
                 continue;
             }
             // Warp
             break;
         case 'w':
+            std::cout << "Pipe";
             warp();
             break;
         default:
+            std::cout << "Encountered Edge Case " << currSpotChar << " \n";
             break;
     }
 }
 
 // added move
 void World::move() {
-    if (getCurrSpotChar(m_Hrow, m_Hcolumn) != 'k' && getCurrSpotChar(m_Hrow, m_Hcolumn) != 'g') {
+    interact();
+    enum Direction { UP = 0, RIGHT, DOWN, LEFT };
+
+    // Generates a random number between 0-3 (inclusive) for direction
+    Direction direction = static_cast<Direction>(rand() % 4);
+
+    // Check if Mario is not on an enemy spot
+    currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
+    if (currSpotChar == 'k') {
+        std::cout << "Mario found a KOOPA!\n";
+        m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'k';
+    } else if (currSpotChar == 'g') {
+        std::cout << "Mario found a GOOMBA!\n";
+        m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'g';
+    } else {
+        std::cout << "Mario did not encounter an enemy\n";
         m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
     }
+
     int newRow = m_Hrow;
     int newColumn = m_Hcolumn;
-
-    // generates a random number between 0-3
-    int direction = (rand() % 4);
     
     switch (direction) {
-    // Move up
-    case 0:
-        newRow = (m_Hrow - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
-        std::cout << "Mario moved up" << std::endl;
-        break;
-    
-    // Move right
-    case 1:
-        newColumn = (m_Hcolumn + 1) % m_levelsInWorld[m_currLvl].getN();
-        std::cout << "Mario moved right" << std::endl;
-        break;
-    
-    // Move down
-    case 2:
-        newRow = (m_Hrow + 1) % m_levelsInWorld[m_currLvl].getN();
-        std::cout << "Mario moved down" << std::endl;
-        break;
-    
-    // Move left
-    case 3:
-        newColumn = (m_Hcolumn - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
-        std::cout << "Mario moved left" << std::endl;
-        break;
+        case UP:
+            newRow = (m_Hrow - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
+            std::cout << "Mario moved up" << std::endl;
+            break;
+
+        case RIGHT:
+            newColumn = (m_Hcolumn + 1) % m_levelsInWorld[m_currLvl].getN();
+            std::cout << "Mario moved right" << std::endl;
+            break;
+
+        case DOWN:
+            newRow = (m_Hrow + 1) % m_levelsInWorld[m_currLvl].getN();
+            std::cout << "Mario moved down" << std::endl;
+            break;
+
+        case LEFT:
+            newColumn = (m_Hcolumn - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
+            std::cout << "Mario moved left" << std::endl;
+            break;
     }
 
     // Update Mario's position
@@ -237,15 +256,18 @@ void World::move() {
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
 }
 
+
 void World::play() {
-    while (m_mario.getLives() > 0 && m_currLvl <= m_worldSize) {
+    std::cout << "Current Character" << currSpotChar << " \n";
+    int moves = 0;
+    interact();
+    while (m_mario.getLives() > 0 && m_currLvl <= m_worldSize && moves < 2) {
         std::cout << "Test\n";
         displayGrid();
-        interact();
         move();
         displayGrid();
         std::cout << "Test\n";
-        break;
+        moves++;
     }
 }
 
@@ -253,8 +275,8 @@ int main(int argc, char const *argv[])
 {
     std::cout << "Test";
     World world(3, 5, 3, 20, 20, 20, 20, 20);
-    std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
-    std::cout << "Test2\n";
+    // std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
+    // std::cout << "Test2\n";
     
     world.play();
 
