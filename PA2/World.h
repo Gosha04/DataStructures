@@ -27,7 +27,7 @@ private:
 
 public:
     World ();
-    World(int L, int N, int life, int x, int m, int c, int g, int k);
+    World(int L, int N, int life, int x, int m, int c, int g, int k, std::string output);
     ~World();
     void nextLevel();
     char getCurrSpotChar(int x, int y);
