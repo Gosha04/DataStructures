@@ -82,6 +82,10 @@ void Mario::increaseEnemiesKilled() {
     // add one life to total lives and reset the counter
     if (m_enemiesKilledOnCurrentLife >= 7) {
         m_lives += 1;
-        m_enemiesKilledOnCurrentLife = 0;
+       resetEnemiesKilled();
     }
+}
+
+void Mario::resetEnemiesKilled() {
+    m_enemiesKilledOnCurrentLife = 0;
 }

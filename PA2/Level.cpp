@@ -129,14 +129,16 @@ void Level::placePipe() {
 }
 
 // places mario on the row and column that were passed in
-void Level::placeMario(int row, int column) {
+char Level::placeMario(int row, int column) {
+    char c = m_grid[row][column];
     m_grid[row][column] = 'H';
+    return c;
 }
 
 // int main(int argc, char const *argv[]) {
 //     Level level(5, 20,20,20,20,20);
 //     // level.populateGrid(4, 20, 26, 25, 25);
-//     level.placeMario(1,2);
+//     std::cout << "Old Char" << level.placeMario(1,2) << std::endl;
 //     level.placePipe();
 //     level.displayGrid();
 
