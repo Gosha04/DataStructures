@@ -206,16 +206,16 @@ void World::interact() {
 
 // added move
 void World::move() {
-    interact();
     enum Direction { UP = 0, RIGHT, DOWN, LEFT };
 
     // Generates a random number between 0-3 (inclusive) for direction
     Direction direction = static_cast<Direction>(rand() % 4);
 
     // Check if Mario is not on an enemy spot
-    currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
-    std::cout << "Current spot character: '" << currSpotChar << "'\n";
-
+    std::cout << "Start spot character: '" << currSpotChar << "'\n";
+    // currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
+    interact();
+    
     if (currSpotChar == 'k') {
         std::cout << "Mario found a KOOPA!\n";
         m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'k';
@@ -223,7 +223,7 @@ void World::move() {
         std::cout << "Mario found a GOOMBA!\n";
         m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'g';
     } else if (currSpotChar == 'H') {
-        std::cout << "FUCKING MARIO\n";
+        std::cout << "Mario on himself\n";
     } else {
         std::cout << "Mario did not encounter an enemy\n";
         m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
@@ -235,6 +235,7 @@ void World::move() {
     switch (direction) {
         case UP:
             newRow = (m_Hrow - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
+            
             std::cout << "Mario moved up" << std::endl;
             break;
 
@@ -257,14 +258,14 @@ void World::move() {
     // Update Mario's position
     m_Hrow = newRow;
     m_Hcolumn = newColumn;
-    m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+    currSpotChar = m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+    std::cout << "Current spot character at end of move: '" << currSpotChar << "'\n";
 }
 
 
 void World::play() {
     std::cout << "Current Character " << currSpotChar << " \n";
     int moves = 0;
-    interact();
     while (m_mario.getLives() > 0 && m_currLvl <= m_worldSize && moves < 2) {
         std::cout << "Test\n";
         displayGrid();
