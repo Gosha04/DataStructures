@@ -3,7 +3,91 @@ Test
 Start spot character: 'x'
 Encountered Edge Case x 
 Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'k'
+Test
+Test
+Start spot character: 'k'
+Koopa
+Lives: 3 PowLvl: 0 Win
+Mario found a KOOPA!
 Mario moved down
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 3 PowLvl: 0 Win
+Mario found a GOOMBA!
+Mario moved down
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 3 PowLvl: 0 Win
+Mario found a GOOMBA!
+Mario moved left
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 3 PowLvl: 0 Win
+Mario found a GOOMBA!
+Mario moved up
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 2 PowLvl: 0 Lose
+Mario found a GOOMBA!
+Mario moved up
+Current spot character at end of move: 'k'
+Test
+Test
+Start spot character: 'k'
+Koopa
+Lives: 1 PowLvl: 0 Lose
+Mario found a KOOPA!
+Mario moved up
+Current spot character at end of move: 'b'
+Test
+Test
+Start spot character: 'b'
+Boss
+Lives: 1 PowLvl: 0 Win
+Mario found a KOOPA!
+Mario moved right
+Current spot character at end of move: 'c'
+Test
+Test
+Start spot character: 'c'
+Coin
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'm'
+Test
+Test
+Start spot character: 'm'
+Mushroom
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
 Current spot character at end of move: 'w'
 Test
 Test
@@ -12,49 +96,20 @@ Pipe
 Mario warped!
 Mario on himself
 Mario moved down
-Current spot character at end of move: 'm'
-Test
-Test
-Start spot character: 'm'
-Mushroom
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 3 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 3 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved down
 Current spot character at end of move: 'g'
 Test
 Test
 Start spot character: 'g'
 Goomba
-Lives: 3 PowLvl: 1 Win
+Lives: 1 PowLvl: 1 Win
+Mario found a GOOMBA!
+Mario moved left
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 1 PowLvl: 1 Win
 Mario found a GOOMBA!
 Mario moved down
 Current spot character at end of move: 'x'
@@ -62,13 +117,6 @@ Test
 Test
 Start spot character: 'x'
 Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'm'
-Test
-Test
-Start spot character: 'm'
-Mushroom
 Mario did not encounter an enemy
 Mario moved down
 Current spot character at end of move: 'c'
@@ -78,22 +126,6 @@ Start spot character: 'c'
 Coin
 Mario did not encounter an enemy
 Mario moved down
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 3 PowLvl: 2 Win
-Mario found a KOOPA!
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 3 PowLvl: 2 Win
-Mario found a GOOMBA!
-Mario moved down
 Current spot character at end of move: 'c'
 Test
 Test
@@ -101,13 +133,12 @@ Start spot character: 'c'
 Coin
 Mario did not encounter an enemy
 Mario moved left
-Current spot character at end of move: 'g'
+Current spot character at end of move: 'c'
 Test
 Test
-Start spot character: 'g'
-Goomba
-Lives: 3 PowLvl: 2 Win
-Mario found a GOOMBA!
+Start spot character: 'c'
+Coin
+Mario did not encounter an enemy
 Mario moved right
 Current spot character at end of move: 'x'
 Test
@@ -121,768 +152,210 @@ Test
 Test
 Start spot character: 'g'
 Goomba
-Lives: 3 PowLvl: 2 Win
+Lives: 1 PowLvl: 1 Win
 Mario found a GOOMBA!
+Mario moved left
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved down
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved down
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved down
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 1 PowLvl: 1 Win
+Mario found a GOOMBA!
+Mario moved right
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
 Mario moved up
 Current spot character at end of move: 'k'
 Test
 Test
 Start spot character: 'k'
 Koopa
-Lives: 4 PowLvl: 2 Win
+Lives: 1 PowLvl: 1 Win
 Mario found a KOOPA!
-Mario moved down
+Mario moved up
 Current spot character at end of move: 'g'
 Test
 Test
 Start spot character: 'g'
 Goomba
-Lives: 4 PowLvl: 2 Win
+Lives: 1 PowLvl: 1 Win
+Mario found a GOOMBA!
+Mario moved up
+Current spot character at end of move: 'm'
+Test
+Test
+Start spot character: 'm'
+Mushroom
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'm'
+Test
+Test
+Start spot character: 'm'
+Mushroom
+Mario did not encounter an enemy
+Mario moved down
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'm'
+Test
+Test
+Start spot character: 'm'
+Mushroom
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'm'
+Test
+Test
+Start spot character: 'm'
+Mushroom
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 2 PowLvl: 2 Win
 Mario found a GOOMBA!
 Mario moved down
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved left
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved up
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 2 PowLvl: 2 Win
+Mario found a GOOMBA!
+Mario moved right
+Current spot character at end of move: 'g'
+Test
+Test
+Start spot character: 'g'
+Goomba
+Lives: 2 PowLvl: 2 Win
+Mario found a GOOMBA!
+Mario moved up
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'x'
+Test
+Test
+Start spot character: 'x'
+Encountered Edge Case x 
+Mario did not encounter an enemy
+Mario moved right
+Current spot character at end of move: 'k'
+Test
+Test
+Start spot character: 'k'
+Koopa
+Lives: 2 PowLvl: 1 Lose
+Mario found a KOOPA!
+Mario moved right
+Current spot character at end of move: 'k'
+Test
+Test
+Start spot character: 'k'
+Koopa
+Lives: 2 PowLvl: 1 Win
+Mario found a KOOPA!
+Mario moved left
+Current spot character at end of move: 'k'
+Test
+Test
+Start spot character: 'k'
+Koopa
+Lives: 2 PowLvl: 1 Win
+Mario found a KOOPA!
+Mario moved up
 Current spot character at end of move: 'b'
 Test
 Test
 Start spot character: 'b'
 Boss
-Lives: 4 PowLvl: 0 Lose
-Lives: 4 PowLvl: 0 Win
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 4 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 4 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'c'
-Test
-Test
-Start spot character: 'c'
-Coin
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'm'
-Test
-Test
-Start spot character: 'm'
-Mushroom
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 4 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 4 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 5 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 5 PowLvl: 0 Lose
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 5 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 5 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 5 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 5 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 5 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 5 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'm'
-Test
-Test
-Start spot character: 'm'
-Mushroom
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 6 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'c'
-Test
-Test
-Start spot character: 'c'
-Coin
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'c'
-Test
-Test
-Start spot character: 'c'
-Coin
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 7 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved up
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'm'
-Test
-Test
-Start spot character: 'm'
-Mushroom
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 2 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 2 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 2 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 8 PowLvl: 1 Lose
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 8 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved up
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 8 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 9 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved up
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 9 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 9 PowLvl: 1 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 9 PowLvl: 1 Win
-Mario found a KOOPA!
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 9 PowLvl: 0 Lose
-Mario found a GOOMBA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 9 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 9 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 9 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved up
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 9 PowLvl: 0 Lose
-Mario found a KOOPA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved left
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 0 Lose
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 8 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 8 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 7 PowLvl: 0 Lose
-Mario found a KOOPA!
-Mario moved up
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 7 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved right
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 7 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'k'
-Test
-Test
-Start spot character: 'k'
-Koopa
-Lives: 7 PowLvl: 0 Win
-Mario found a KOOPA!
-Mario moved down
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 0 Lose
-Mario found a GOOMBA!
-Mario moved left
-Current spot character at end of move: 'x'
-Test
-Test
-Start spot character: 'x'
-Encountered Edge Case x 
-Mario did not encounter an enemy
-Mario moved right
-Current spot character at end of move: 'g'
-Test
-Test
-Start spot character: 'g'
-Goomba
-Lives: 6 PowLvl: 0 Win
-Mario found a GOOMBA!
-Mario moved down
-Current spot character at end of move: 'b'
-Test
-Test
-Start spot character: 'b'
-Boss
-Lives: 6 PowLvl: 0 Win
+Lives: 2 PowLvl: 1 Win

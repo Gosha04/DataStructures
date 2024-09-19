@@ -62,9 +62,9 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
 
     // Generate the mario and enemy objects
     m_mario = Mario(life);
-    m_bowser = Enemy(40,2);
-    m_koopa = Enemy(90,1);
-    m_goomba = Enemy(90,1);
+    m_bowser = Enemy(50,2);
+    m_koopa = Enemy(65,1);
+    m_goomba = Enemy(80,1);
 
     // loops through utill mario is placed
     while (true) {
