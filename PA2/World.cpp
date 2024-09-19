@@ -1,4 +1,6 @@
 #include "World.h"
+#include <iostream>
+using namespace std;
 
 // default constructor
 // generates a world with 2 levels with 5 rows in each
@@ -45,7 +47,7 @@ World::World() :  m_currLvl(0), m_worldSize(2), m_goomba(80, 1), m_koopa(65, 1),
 }
 
 // generates a world with the number of levels passed in
-World::World(int L, int N,int life, int x, int m, int c, int g, int k) : m_currLvl(0), m_worldSize(L), 
+World::World(int L, int N,int life, int x, int m, int c, int g, int k, std::string output) : m_currLvl(0), m_worldSize(L), 
 m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     m_levelsInWorld = new Level[m_worldSize];
     // loops through all the levels except the last one
@@ -60,9 +62,9 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
 
     // Generate the mario and enemy objects
     m_mario = Mario(life);
-    m_bowser = Enemy(50,2);
-    m_koopa = Enemy(65,1);
-    m_goomba = Enemy(80,1);
+    m_bowser = Enemy(40,2);
+    m_koopa = Enemy(90,1);
+    m_goomba = Enemy(90,1);
 
     // loops through utill mario is placed
     while (true) {
@@ -82,7 +84,7 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     }
 
     // creates the outputfile and opens it
-    outFile.open("log.txt");
+    outFile.open(output);
 
     srand(time(NULL));
 }
@@ -97,18 +99,22 @@ void World::nextLevel() {
     // increments the currLev variable
     m_currLvl ++;
 
-    // loops through utill mario is placed
+    // loops through until mario is placed
     while (true) {
          // generates two random points within the grid
         m_Hrow = randomCoord();
         m_Hcolumn = randomCoord();
       
-        // checks to wee if mario is being placed on the warp pipe or on bowser
+        // checks to see if mario is being placed on the warp pipe or on bowser
         if ((m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'b') && 
         (m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'w')) {
-            // if he is not it places pario and breaks out of the loop
+            // if he is not it places mario and breaks out of the loop
+            m_levelsInWorld[m_currLvl].displayGrid();
+            std::cout <<"\n\n\n\n";
             currSpotChar = m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
             break;
+        } else {
+            continue;
         }
     }
     // prints out the current level that mario is on
@@ -158,9 +164,10 @@ bool World::battle(Enemy enemy) {
             if (enemy.equals(m_bowser)) {
                 if (m_currLvl == m_worldSize - 1) {
                 std::cout << "Game Over!" << std::endl;
+                outFile.flush();
                 exit(0);
                 } else {
-                    warp();
+                    nextLevel();
                 }
             } else {
                 m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
@@ -173,6 +180,7 @@ void World::warp() {
     nextLevel();
     currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn); 
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
+    std::cout << "Mario warped!\n";
     outFile << "Mario warped!\n";
 }
 
@@ -198,9 +206,12 @@ void World::interact() {
             break;
         case 'b':
             outFile << "Boss\n";
-            while (m_mario.getLives() > 0) {
-                if (battle(m_bowser) != true) {
-                    break;  // Break the loop if battle is won or lost
+            while (m_mario.getLives() > 0 && currSpotChar == 'b') {
+                cout << "here" << endl;
+                battle(m_bowser);
+                if (m_mario.getLives() <= 0) {
+                    outFile.flush();
+                    exit(0);
                 }
             }
             // Warp
@@ -283,7 +294,7 @@ void World::move() {
 void World::play() {
     outFile << "Current Character " << currSpotChar << " \n";
     int moves = 0;
-    while (m_currLvl <= m_worldSize) {
+    while (m_currLvl  <= m_worldSize - 1 && m_mario.getLives() > 0) {
         displayGrid();
         std::cout << "Test\n";
         outFile << "Test\n";
@@ -293,18 +304,14 @@ void World::play() {
         //displayGrid();
 
         moves++;
-        if (m_mario.getLives() <= 0) {
-            break;
-        } else if (m_currLvl == m_worldSize) {
-            break;
-        }
+        std::cout << "CURRENT LIVES: " << m_mario.getLives() << "\n\n\n";
     }
 }
 
 int main(int argc, char const *argv[])
 {
     std::cout << "Test\n";
-    World world(3, 5, 3, 20, 20, 20, 20, 20);
+    World world(3, 5, 3, 20, 20, 20, 20, 20, "MarioLog.txt");
     // std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
     // std::cout << "Test2\n";
     
