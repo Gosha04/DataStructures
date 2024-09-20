@@ -20,8 +20,8 @@ World::World() :  m_currLvl(0), m_worldSize(2), m_goomba(80, 1), m_koopa(65, 1),
     // generate the mario and enemy objects
     m_mario = Mario();
     m_bowser = Enemy(50,2);
-    m_koopa = Enemy(65,1);
-    m_goomba = Enemy(80,1);
+    m_koopa = Enemy(10,1);
+    m_goomba = Enemy(10,1);
 
     // loops through until mario is placed
     while (true) {
@@ -63,8 +63,8 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     // Generate the mario and enemy objects
     m_mario = Mario(life);
     m_bowser = Enemy(40,2);
-    m_koopa = Enemy(10,1);
-    m_goomba = Enemy(10,1);
+    m_koopa = Enemy(90,1);
+    m_goomba = Enemy(90,1);
 
     // loops through utill mario is placed
     while (true) {
@@ -322,6 +322,7 @@ void World::play() {
 
 // int main(int argc, char const *argv[])
 // {
+//     std::cout << "Test\n";
 //     World world(3, 5, 3, 20, 20, 20, 20, 20, "MarioLog.txt");
 //     // std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
 //     // std::cout << "Test2\n";

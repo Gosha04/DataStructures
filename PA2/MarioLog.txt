@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 m k c m x 
 H g g x k 
 g g x m g 
@@ -24,3 +25,5 @@ x m m c b
 ==========
 Level: 1. Mario is at position: (1,2). Mario has encountered a Goomba and lost. Mario has 0 lives left. Mario is at Power Level 0.
 Mario has lost the game.
+=======
+>>>>>>> fd0c55558db0f5fe44132af6f2c1900d9c38b13a
