@@ -1,0 +1,46 @@
+x b g g m 
+x g g g k 
+g g k k c 
+k c c w k 
+g k H x k 
+==========
+Level: 1. Mario is at position: (5,3). Mario collected a mushroom. Mario has 3 lives left. Mario is at Power Level 1.
+Mario has 0 coin(s). Mario moved LEFT.
+==========
+x b g g m 
+x g g g k 
+g g k k c 
+k c c w k 
+g H x x k 
+==========
+Level: 1. Mario is at position: (5,2). Mario has encountered a Koopa and lost. Mario has 3 lives left. Mario is at Power Level 0.
+Mario moved DOWN.
+==========
+x H g g m 
+x g g g k 
+g g k k c 
+k c c w k 
+g k x x k 
+==========
+Level: 1. Mario is at position: (1,2). Mario has encountered Bowser and won. Mario has 3 lives left. Mario is at Power Level 0.
+Mario placed at (3,2) on level 2
+Mario moved RIGHT.
+==========
+g g m x g 
+g g k g g 
+k H H k c 
+c m b w k 
+m x k c k 
+==========
+Level: 2. Mario is at position: (3,3). Mario collected a coin. Mario has 3 lives left. Mario is at Power Level 0.
+Mario has 1 coin(s). Mario moved DOWN.
+==========
+g g m x g 
+g g k g g 
+k H x k c 
+c m H w k 
+m x k c k 
+==========
+Level: 2. Mario is at position: (4,3). Mario has encountered Bowser and lost. Mario has 2 lives left. Mario is at Power Level 0.
+and lost. Mario has 1 lives left. Mario is at Power Level 0.
+and lost. Mario has 0 lives left. Mario is at Power Level 0.
