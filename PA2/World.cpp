@@ -63,8 +63,8 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
     // Generate the mario and enemy objects
     m_mario = Mario(life);
     m_bowser = Enemy(40,2);
-    m_koopa = Enemy(90,1);
-    m_goomba = Enemy(90,1);
+    m_koopa = Enemy(10,1);
+    m_goomba = Enemy(10,1);
 
     // loops through utill mario is placed
     while (true) {
@@ -118,7 +118,7 @@ void World::nextLevel() {
     }
     // prints out the current level that mario is on
     m_levelsInWorld[m_currLvl].displayGrid();
-    outFile << "Mario placed at (" << m_Hrow + 1 << "," << m_Hcolumn + 1 << ") on level " << m_currLvl + 1 << "\n";
+    outFile << "Mario placed at (" << m_Hcolumn << "," << m_Hrow << ") on Level: " << m_currLvl + 1 << "\n";
 
 }
 
@@ -205,24 +205,32 @@ void World::interact() {
         case 'g':
             outFile << "Mario has encountered a Goomba ";
             if (battle(m_goomba) == false) {
+                if (m_mario.getLives() <= 0) {
+                    outFile << "Mario has lost the game.\n";
+                    outFile.flush();
+                    exit(0);
+                }
                 m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'g';
             } else {
                 m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
             }
-            // Movement
             break;
         case 'k':
             outFile << "Mario has encountered a Koopa ";
             if (battle(m_koopa) == false) {
+                if (m_mario.getLives() <= 0) {
+                    outFile << "Mario has lost the game.\n";
+                    outFile.flush();
+                    exit(0);
+                }
                 m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'k';
             } else {
                 m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
             }
-            // Movement
             break;
         case 'b':
-            outFile << "Mario has encountered Bowser ";
             while (m_mario.getLives() > 0 && currSpotChar == 'b') {
+                outFile << "Mario has encountered Bowser ";
                 battle(m_bowser);
                 if (m_mario.getLives() <= 0) {
                     outFile << "Mario has lost the game. \n";
@@ -230,7 +238,6 @@ void World::interact() {
                     exit(0);
                 }
             }
-            // Warp
             break;
         case 'w':
             outFile << "Mario has found the warp pipe. Mario has moved to the next level! ";
@@ -257,7 +264,7 @@ void World::move() {
     outFile << "==========\n";
     outFile << "Level: " << m_currLvl + 1 << ". ";
     // Check if Mario is not on an enemy spot
-    outFile << "Mario is at position: (" << m_Hrow << "," << m_Hcolumn << "). ";
+    outFile << "Mario is at position: (" << m_Hcolumn << "," << m_Hrow << "). ";
     // currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
     interact();
     
