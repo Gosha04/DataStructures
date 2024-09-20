@@ -13,7 +13,7 @@ input.txt MarioLog.txt
 
 To our awareness there are no run time errors when everything is entered completely
 
-4) A list of all references used to complete the assignment, including peers (if applicable)
+No outside sources were used for this programming assignment
 
 to compile - g++ -o Mario *.cpp
 to run - ./Mario input.txt MarioLog.txt
