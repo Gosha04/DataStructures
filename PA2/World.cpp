@@ -70,9 +70,9 @@ m_goomba(80, 1), m_koopa(65, 1), m_bowser(50, 2), m_mario(life) {
 
     // Generate the mario and enemy objects
     m_mario = Mario(life);
-    m_bowser = Enemy(40,2);
-    m_koopa = Enemy(10,1);
-    m_goomba = Enemy(10,1);
+    m_bowser = Enemy(50,2);
+    m_koopa = Enemy(65,1);
+    m_goomba = Enemy(80,1);
 
     // loops through utill mario is placed
     while (true) {
@@ -125,7 +125,7 @@ void World::nextLevel() {
         }
     }
     // prints out the current level that mario is on
-    outFile << "\n==========\n";
+    outFile << "==========\n";
     outFile << m_levelsInWorld[m_currLvl].displayGrid();
     outFile << "==========\n";
     outFile << "Mario placed at (" << m_Hcolumn << "," << m_Hrow << ") on Level: " << m_currLvl + 1 << "\n";
@@ -167,8 +167,8 @@ bool World::battle(Enemy enemy) {
         // decreases marios power level
         m_mario.decreasePowLevel(enemy.getEnemyPowLevel());
         outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-        << ".\n";
-        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+        << ". ";
+        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
         // if mario lost a life, it will reset the number of enemies killed on one life
         if (m_mario.getLives() < beforeLives) {
             m_mario.resetEnemiesKilled();
@@ -178,8 +178,8 @@ bool World::battle(Enemy enemy) {
     } else {
         outFile << "and won. ";
         outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-        << ".\n";
-        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+        << ". ";
+        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
         // increase the number of enemies mario has killed on one life
         m_mario.increaseEnemiesKilled();
         // if mario battled bowser
@@ -217,16 +217,16 @@ void World::interact() {
             outFile << "Mario collected a coin. ";
             m_mario.addCoin();
             outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-            << ".\n";
-            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+            << ". ";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
             break;
         // if it is a mushroom mario will increase his power level
         case 'm':
             outFile << "Mario collected a mushroom. ";
             m_mario.addPow();
             outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-            << ".\n";
-            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+            << ". ";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
             break;
         // if it is a goomba mario will battle it
         case 'g':
@@ -283,18 +283,18 @@ void World::interact() {
             break;
         // if it is a warp pipe mario will warp to the next level
         case 'w':
-            outFile << "Mario has found the warp pipe. Mario has moved to the next level! ";
+            outFile << "Mario has found the warp pipe. Mario has moved to the next level!\n";
             warp();
             outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-            << ".\n";
-            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+            << ". ";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
             break;
         // if it is nothing mario does nothing
         default:
             outFile << "Mario has found nothing. ";
             outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
-            << ".\n";
-            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
+            << ". ";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s).\n";
             break;
     }
 }
@@ -308,7 +308,7 @@ void World::move() {
     outFile << "==========\n";
     outFile << "Level: " << m_currLvl + 1 << ". ";
     // Check if Mario is not on an enemy spot
-    outFile << "Mario is at position: (" << m_Hcolumn << "," << m_Hrow << "). ";
+    outFile << "Mario is at position: (" << m_Hcolumn << "," << m_Hrow << ").\n";
     // currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
     interact();
     
