@@ -166,9 +166,9 @@ bool World::battle(Enemy enemy) {
         m_mario.increaseEnemiesKilled();
         if (enemy.equals(m_bowser)) {
             if (m_currLvl == m_worldSize - 1) {
-            outFile << "Mario has LOST the game.\n";
-            outFile.flush();
-            exit(0);
+                outFile << "Mario has saved the princess.\n";
+                outFile.flush();
+                exit(0);
             } else {
                 nextLevel();
             }
@@ -225,6 +225,7 @@ void World::interact() {
             while (m_mario.getLives() > 0 && currSpotChar == 'b') {
                 battle(m_bowser);
                 if (m_mario.getLives() <= 0) {
+                    outFile << "Mario has lost the game. \n";
                     outFile.flush();
                     exit(0);
                 }
@@ -256,7 +257,7 @@ void World::move() {
     outFile << "==========\n";
     outFile << "Level: " << m_currLvl + 1 << ". ";
     // Check if Mario is not on an enemy spot
-    outFile << "Mario is at position: (" << m_Hrow + 1 << "," << m_Hcolumn + 1 << "). ";
+    outFile << "Mario is at position: (" << m_Hrow << "," << m_Hcolumn << "). ";
     // currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
     interact();
     
