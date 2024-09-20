@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman || Dylan Barlava
+2449656 || 2428584
+vaysman@chapman.edu || dbarlava@chapman.edu
+CPSC 350-02
+PA2
+*/
+
 #include "Level.h"
 
 // default constructor does not generate a level
