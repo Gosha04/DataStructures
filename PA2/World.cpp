@@ -125,7 +125,9 @@ void World::nextLevel() {
         }
     }
     // prints out the current level that mario is on
-    m_levelsInWorld[m_currLvl].displayGrid();
+    outFile << "\n==========\n";
+    outFile << m_levelsInWorld[m_currLvl].displayGrid();
+    outFile << "==========\n";
     outFile << "Mario placed at (" << m_Hcolumn << "," << m_Hrow << ") on Level: " << m_currLvl + 1 << "\n";
 
 }
