@@ -308,14 +308,14 @@ void World::play() {
     }
 }
 
-int main(int argc, char const *argv[])
-{
-    std::cout << "Test\n";
-    World world(3, 5, 3, 20, 20, 20, 20, 20, "MarioLog.txt");
-    // std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
-    // std::cout << "Test2\n";
+// int main(int argc, char const *argv[])
+// {
+//     std::cout << "Test\n";
+//     World world(3, 5, 3, 20, 20, 20, 20, 20, "MarioLog.txt");
+//     // std::cout << "Grid pointer: " << world.getLevel(0).getGrid() << std::endl;
+//     // std::cout << "Test2\n";
     
-    world.play();
+//     world.play();
 
-    return 0;
-}
+//     return 0;
+// }
