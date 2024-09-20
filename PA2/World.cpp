@@ -166,6 +166,7 @@ bool World::battle(Enemy enemy) {
         m_mario.decreasePowLevel(enemy.getEnemyPowLevel());
         outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
         << ".\n";
+        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
         // if mario lost a life, it will reset the number of enemies killed on one life
         if (m_mario.getLives() < beforeLives) {
             m_mario.resetEnemiesKilled();
@@ -176,6 +177,7 @@ bool World::battle(Enemy enemy) {
         outFile << "and won. ";
         outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
         << ".\n";
+        outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
         // increase the number of enemies mario has killed on one life
         m_mario.increaseEnemiesKilled();
         // if mario battled bowser
