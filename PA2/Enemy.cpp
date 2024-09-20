@@ -42,16 +42,12 @@ int Enemy::getEnemyPowLevel() {
 bool Enemy::battleMath() {
     // generates a random number 1-100
     int result = (rand() % 100) + 1;
-    std::cout << "Win chance: " << m_MarioWinChance << std::endl;
-    std::cout << "Random number: " << result << std::endl;
     // if the number is less than marios win chance mario wins the battle
     if (result <= m_MarioWinChance) {
-        std::cout << "Mario wins the battle" << std::endl;
         return true;
     }
     // if the number is greater than marios win chance mario looses
     else {
-        std::cout << "Mario lost" << std::endl;
         return false;
     }
 }

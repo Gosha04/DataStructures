@@ -52,15 +52,18 @@ void Level::makeGrid(int n, int x, int m, int c, int g, int k) {
 }
 
 // displays the grid for the level
-void Level::displayGrid() {
+std::string Level::displayGrid() {
+    std::string result;
     //loops through each row
     for(int i = 0; i < m_N; ++i) {
         // prints out each item in the rows
         for(int j = 0; j < m_N; ++j) {
-            std::cout << m_grid[i][j] << " ";
+            result += m_grid[i][j];
+            result += " ";
         }
-        std::cout << "\n";
+        result += "\n";
     }
+    return result;
 }
 
 // returns what is in a spot on the grid

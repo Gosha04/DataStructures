@@ -110,7 +110,6 @@ void World::nextLevel() {
         (m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] != 'w')) {
             // if he is not it places mario and breaks out of the loop
             m_levelsInWorld[m_currLvl].displayGrid();
-            std::cout <<"\n\n\n\n";
             currSpotChar = m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
             break;
         } else {
@@ -119,7 +118,7 @@ void World::nextLevel() {
     }
     // prints out the current level that mario is on
     m_levelsInWorld[m_currLvl].displayGrid();
-    std::cout << "Mario placed at (" << m_Hrow << ", " << m_Hcolumn << ") on level " << m_currLvl << std::endl;
+    outFile << "Mario placed at (" << m_Hrow + 1 << "," << m_Hcolumn + 1 << ") on level " << m_currLvl + 1 << "\n";
 
 }
 
@@ -135,7 +134,7 @@ char World::getCurrSpotChar(int x, int y) {
 
 void World::displayGrid() {
     // calls the levels display grid method
-    m_levelsInWorld[m_currLvl].displayGrid();
+    outFile << m_levelsInWorld[m_currLvl].displayGrid();
 }
 
 // returns the current level that mario is on
@@ -151,63 +150,79 @@ int World::randomCoord() {
 
 bool World::battle(Enemy enemy) {
     if (enemy.battleMath() == false) {
+        outFile << "and lost. ";
         int beforeLives = m_mario.getLives();
         m_mario.decreasePowLevel(enemy.getEnemyPowLevel());
-        outFile << "Lives: " << m_mario.getLives() << " PowLvl: " << m_mario.getPowLevel() << " Lose\n";
+        outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+        << ".\n";
         if (m_mario.getLives() < beforeLives) {
             m_mario.resetEnemiesKilled();
             }
         return false;
-        } else {
-            outFile << "Lives: " << m_mario.getLives() << " PowLvl: " << m_mario.getPowLevel() << " Win\n";
-            m_mario.increaseEnemiesKilled();
-            if (enemy.equals(m_bowser)) {
-                if (m_currLvl == m_worldSize - 1) {
-                std::cout << "Game Over!" << std::endl;
-                outFile.flush();
-                exit(0);
-                } else {
-                    nextLevel();
-                }
+    } else {
+        outFile << "and won. ";
+        outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+        << ".\n";
+        m_mario.increaseEnemiesKilled();
+        if (enemy.equals(m_bowser)) {
+            if (m_currLvl == m_worldSize - 1) {
+            outFile << "Mario has LOST the game.\n";
+            outFile.flush();
+            exit(0);
             } else {
-                m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
+                nextLevel();
             }
-            return true;
+        } else {
+            // std::cout << "Spot cleared " << m_Hrow << m_Hcolumn << endl;
+            m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
         }
+        return true;
+    }
 }
 
 void World::warp() {
     nextLevel();
     currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn); 
     m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
-    std::cout << "Mario warped!\n";
-    outFile << "Mario warped!\n";
 }
 
 void World::interact() {
     switch (currSpotChar) {
         case 'c':
-            outFile << "Coin\n";
+            outFile << "Mario collected a coin. ";
             m_mario.addCoin();
+            outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+            << ".\n";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
             break;
         case 'm':
-            outFile << "Mushroom\n";
+            outFile << "Mario collected a mushroom. ";
             m_mario.addPow();
+            outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+            << ".\n";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
             break;
         case 'g':
-            outFile << "Goomba\n";
-            battle(m_goomba);
+            outFile << "Mario has encountered a Goomba ";
+            if (battle(m_goomba) == false) {
+                m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'g';
+            } else {
+                m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
+            }
             // Movement
             break;
         case 'k':
-            outFile << "Koopa\n";
-            battle(m_koopa);
+            outFile << "Mario has encountered a Koopa ";
+            if (battle(m_koopa) == false) {
+                m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'k';
+            } else {
+                m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
+            }
             // Movement
             break;
         case 'b':
-            outFile << "Boss\n";
+            outFile << "Mario has encountered Bowser ";
             while (m_mario.getLives() > 0 && currSpotChar == 'b') {
-                cout << "here" << endl;
                 battle(m_bowser);
                 if (m_mario.getLives() <= 0) {
                     outFile.flush();
@@ -217,11 +232,17 @@ void World::interact() {
             // Warp
             break;
         case 'w':
-            outFile << "Pipe\n";
+            outFile << "Mario has found the warp pipe. Mario has moved to the next level! ";
             warp();
+            outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+            << ".\n";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
             break;
         default:
-            outFile << "Encountered Edge Case " << currSpotChar << " \n";
+            outFile << "Mario has found nothing. ";
+            outFile << "Mario has " << m_mario.getLives() << " lives left." << " Mario is at Power Level " << m_mario.getPowLevel()
+            << ".\n";
+            outFile << "Mario has " << m_mario.getNumCoins() << " coin(s). ";
             break;
     }
 }
@@ -232,23 +253,14 @@ void World::move() {
 
     // Generates a random number between 0-3 (inclusive) for direction
     Direction direction = static_cast<Direction>(rand() % 4);
-
+    outFile << "==========\n";
+    outFile << "Level: " << m_currLvl + 1 << ". ";
     // Check if Mario is not on an enemy spot
-    outFile << "Start spot character: '" << currSpotChar << "'\n";
+    outFile << "Mario is at position: (" << m_Hrow + 1 << "," << m_Hcolumn + 1 << "). ";
     // currSpotChar = getCurrSpotChar(m_Hrow, m_Hcolumn);
     interact();
     
-    if (currSpotChar == 'k') {
-        outFile << "Mario found a KOOPA!\n";
-        m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'k';
-    } else if (currSpotChar == 'g') {
-        outFile << "Mario found a GOOMBA!\n";
-        m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'g';
-    } else if (currSpotChar == 'H') {
-        m_levelsInWorld[m_currLvl].getGrid()[m_Hrow][m_Hcolumn] = 'x';
-        outFile << "Mario on himself\n";
-    } else {
-        outFile << "Mario did not encounter an enemy\n";
+    if (currSpotChar != 'k' && currSpotChar != 'g' ) {
         m_levelsInWorld[m_currLvl].clearSpot(m_Hrow, m_Hcolumn);
     }
 
@@ -258,27 +270,26 @@ void World::move() {
     switch (direction) {
     case UP:
         newRow = (m_Hrow - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
-        
-        outFile << "Mario moved up\n";
-        std::cout << "Mario moved up\n";  // Print to console
+        outFile << "Mario moved UP.\n";
+        outFile << "==========\n";
         break;
 
     case RIGHT:
         newColumn = (m_Hcolumn + 1) % m_levelsInWorld[m_currLvl].getN();
-        outFile << "Mario moved right\n";
-        std::cout << "Mario moved right\n";  // Print to console
+        outFile << "Mario moved RIGHT.\n";
+        outFile << "==========\n";
         break;
 
     case DOWN:
         newRow = (m_Hrow + 1) % m_levelsInWorld[m_currLvl].getN();
-        outFile << "Mario moved down\n";
-        std::cout << "Mario moved down\n";  // Print to console
+        outFile << "Mario moved DOWN.\n";
+        outFile << "==========\n";
         break;
 
     case LEFT:
         newColumn = (m_Hcolumn - 1 + m_levelsInWorld[m_currLvl].getN()) % m_levelsInWorld[m_currLvl].getN();
-        outFile << "Mario moved left\n";
-        std::cout << "Mario moved left\n";  // Print to console
+        outFile << "Mario moved LEFT.\n";
+        outFile << "==========\n";
         break;
 }
 
@@ -287,24 +298,17 @@ void World::move() {
     m_Hrow = newRow;
     m_Hcolumn = newColumn;
     currSpotChar = m_levelsInWorld[m_currLvl].placeMario(m_Hrow, m_Hcolumn);
-    outFile << "Current spot character at end of move: '" << currSpotChar << "'\n";
 }
 
 
 void World::play() {
-    outFile << "Current Character " << currSpotChar << " \n";
     int moves = 0;
     while (m_currLvl  <= m_worldSize - 1 && m_mario.getLives() > 0) {
         displayGrid();
-        std::cout << "Test\n";
-        outFile << "Test\n";
         move();
-        std::cout << "Test\n";
-        outFile << "Test\n";
         //displayGrid();
 
         moves++;
-        std::cout << "CURRENT LIVES: " << m_mario.getLives() << "\n\n\n";
     }
 }
 
