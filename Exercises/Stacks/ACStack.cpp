@@ -1,4 +1,4 @@
-#include "ACstack.h"
+#include "ACStack.h"
 #include <cstdlib>
 using namespace std;
 
@@ -22,8 +22,17 @@ ACStack::~ACStack() { // O(1)
     }
 }
 
-void ACStack::push(char c) { // O(1)
-    if (!isFull) {
+
+void ACStack::push(char c) { // O(1) or O(n)
+    if (isFull()) {
+       char* temp = new char[2 * max];
+       for (int i = 0; i < top; ++i) {
+        temp[i] = stackArr[i];
+       }
+       max *= 2;
+       delete[] stackArr;
+       stackArr = temp;
+    } else {
         stackArr[++top] = c;
         ++count;
     }
