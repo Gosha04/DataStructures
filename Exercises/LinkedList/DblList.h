@@ -14,6 +14,19 @@ private:
 public:
     DblList(T data);
     virtual ~DblList();
+    bool isEmpty();
+    int getSize();
+
+    void addFront(T data);
+    void addBack(T data);
+    void add(int pos, T data)
+
+    void removeFront(T data);
+    void removeBack(T data);
+    void remove(int pos, T data);
+
+    T get(int pos);
+    bool contains(T data);
 };
 
 template <typename T>
