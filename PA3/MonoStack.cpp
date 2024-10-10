@@ -4,10 +4,10 @@ int main(int argc, char const *argv[])
 {
     MonoStack<double> myStack(4, 'd');
 
-    myStack.push(81.4);
-    myStack.push(90.0);
-    myStack.push(80.8);
-    myStack.push(82.2);
+    myStack.push(50.2);
+    myStack.push(80.2);
+    myStack.push(90.7);
+    myStack.push(92.6);
 //     myStack.push(2);
 
 //     while (!myStack.isEmpty()) {

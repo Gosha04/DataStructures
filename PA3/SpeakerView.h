@@ -18,6 +18,8 @@ public:
     virtual ~SpeakerView();
     void writeToStack(string fileName);
     void countCanSee();
+    void howBigN(string fileName);
+    void howBigP(string filename);
 };
 
 SpeakerView::SpeakerView() {
@@ -40,66 +42,66 @@ SpeakerView::~SpeakerView() {
 
 void SpeakerView::writeToStack(string fileName) {
     ifstream reader(fileName);    
-    std::string line;
-    if (std::getline(reader, line) && line == "BEGIN") {
-        // God bless geeksforgeeks and cppreference for documentation
-        std::istream_iterator<double> it(reader);   // Before using an iterator I kept outputting artifacts in my code
-        std::istream_iterator<double> end;          // I will do my best to ask if I can keep these once my program fully works
+    string line;
+    if (getline(reader, line) && line == "BEGIN") {
+        istream_iterator<double> it(reader);   // God bless geeksforgeeks and cppreference for documentation
+        istream_iterator<double> end;         // Before using an iterator I kept outputting artifacts and weird symbols
 
         int stackNum = 0;
-        while (stackNum < m_N && it != end) {
-            for (int i = 0; i < m_P && it != end; ++i, ++it) {
+        while (stackNum < m_N - 1 && it != end) {
+            for (int i = 0; i < m_N && it != end; ++i, ++it) {
                 double value = *it;
-                cout << "Array " << i << " value: " << value << endl;
-                cout << "Size: " << m_arrOfStack[i]->isFull() << endl;
                 m_arrOfStack[i]->push(value);
-                cout << "\nCheck 1: " << m_arrOfStack[i]->peek() << endl;
             }
             stackNum++;
         }
     }
+    reader.close();
 }
 
 void SpeakerView::countCanSee() {
     for (int i = 0; i < m_N; ++i) {
-        cout << "\nCheck 2: " << m_arrOfStack[i]->peek() << endl;
-        cout << "\nSize of array " << i << ": " << m_arrOfStack[i]->size() << endl;
-        cout << "Height of those that can see: " << endl;
-        
-        while (m_arrOfStack[i]->isEmpty() == false) {
-                cout << m_arrOfStack[i]->pop() << "  ";
+        cout << "In column " << i << " there are " << m_arrOfStack[i]->size() << " who can see.";
+        cout << " Their heights are: ";
+        while (!m_arrOfStack[i]->isEmpty()) {
+                cout << m_arrOfStack[i]->pop() << " inches ";
             }
         cout << endl;
     }
 }
 
+int SpeakerView::howBigN(string fileName) {
+    ifstream reader(fileName);    
+    string line;
+    int nSize = 0;
+    if (getline(reader, line) && line == "BEGIN") {
+        while(getline(reader, line)) {
+            if (line == "END") {
+                break;
+            }
+            nSize++;
+        }
+    }
+    reader.close();
+    m_N = nSize;
+}
+
+void SpeakerView::howBigP(string fileName) {
+    ifstream reader(fileName);    
+    string line;
+    int pSize = 1;
+    if (getline(reader, line) && line == "BEGIN") {
+        getline(reader, line);
+
+        for (int i = 0; i < line.size(); i++)
+            if (line[i] == ' ') {
+                pSize++;
+            }
+    }
+    reader.close();
+    m_P = pSize;
+}
+
 #endif
 
-// template <typename T>
-// int SpeakerView<T>::howBigN(string fileName) {
-//     if (getline(reader, line) && line == "BEGIN") {
-//         int nSize = 0;
-//         while(getline(reader, line)) {
-//             if (line == "END") {
-//                 break;
-//             }
-//             nSize++;
-//         }
-//     }
-//     return nSize;
-// }
-
-// template <typename T>
-// int SpeakerView<T>::howBigP(string fileName) {
-//     if (getline(reader, line) && line == "BEGIN") {
-//         getline(reader, line);
-        
-//         int pSize = 2;
-//         for (int i = 0; i < line.size(); i++)
-//         if (line[i] == ' ') {
-//             pSize++;
-//         }
-//     }
-//     return pSize;
-// }
 

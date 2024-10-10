@@ -2,11 +2,9 @@
 
 int main(int argc, char const *argv[])
 {
-    SpeakerView speakStack(5, 5);
+    SpeakerView speakStack(speakStack.howBigN(argv[1]), speakStack.howBigP(argv[1]));
     speakStack.writeToStack(argv[1]);
     speakStack.countCanSee();
-
-    //cout << stod(" 23.43 ");
 
     return 0;
 }

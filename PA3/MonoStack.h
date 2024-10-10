@@ -65,6 +65,7 @@ void MonoStack<T>::push(T c) { // O(1) or O(n)
        delete[] stackArr;
        stackArr = temp;
     }
+
     T* tempArr = new T[m_count];
     int tempTop = -1;
 
@@ -81,8 +82,9 @@ void MonoStack<T>::push(T c) { // O(1) or O(n)
             }
         }
     }
-    
+
     tempArr[++tempTop] = c;
+    delete[] stackArr;
     stackArr = tempArr; 
     m_top = tempTop; 
     m_count = m_top + 1;
@@ -96,20 +98,6 @@ T MonoStack<T>::pop() { // O(1)
     --m_count;
     return stackArr[m_top--];
 }
-// template <typename T>
-// T MonoStack<T>::monoCutShift(int index) {
-    
-//     T cutItem = stackArr[index];
-
-//     for (int i = index; i < m_top; ++i) {
-//         stackArr[i] = stackArr[i + 1];
-//     }
-
-//     --m_top;
-//     --m_count;
-
-//     return cutItem;
-// }
 
 template <typename T>
 T MonoStack<T>::peek() { // O(1)
