@@ -21,7 +21,6 @@ public:
     virtual ~MonoStack();
     void push(T c);
     T pop();
-    T monoCutShift(int index);
     T peek();
     bool isEmpty();
     bool isFull();
@@ -66,7 +65,7 @@ void MonoStack<T>::push(T c) { // O(1) or O(n)
        stackArr = temp;
     }
 
-    T* tempArr = new T[m_count];
+    T* tempArr = new T[m_count + 1];
     int tempTop = -1;
 
     if (m_o == 'i') { 

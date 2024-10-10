@@ -18,6 +18,7 @@ int main(int argc, char const *argv[])
 //     myStack.push(11);
 
    while (!myStack.isEmpty()) {
+        cout << "Test" << myStack.peek() << " ";
         cout << myStack.pop() << endl;
     }
 

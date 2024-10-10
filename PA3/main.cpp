@@ -2,8 +2,8 @@
 
 int main(int argc, char const *argv[])
 {
-    SpeakerView speakStack(stoi(argv[1]), stoi(argv[2]));
-    speakStack.writeToStack(argv[3]);
+    SpeakerView speakStack(argv[1]);
+    speakStack.writeToStack();
     speakStack.countCanSee();
 
     return 0;
