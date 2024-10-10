@@ -10,8 +10,8 @@ class ListNode
 {
 private:
     T m_data;
-    ListNode<T>* m_Next();
-    ListNode<T>* m_Prev();
+    ListNode<T>* m_next;
+    ListNode<T>* m_prev;
 
 public:
     ListNode(T data);
@@ -19,15 +19,21 @@ public:
     
     template <typename S>
     friend class DblList;
+    template <typename R>
+    friend class PQueue;
 };
 
 template <typename T>
 ListNode<T>::ListNode(T data) {
-
+    m_next = NULL;
+    m_prev = NULL;
+    m_data = data;
 }
 
 template <typename T>
 ListNode<T>::~ListNode() {
+    m_next = NULL;
+    m_prev = NULL;
 
 }
 

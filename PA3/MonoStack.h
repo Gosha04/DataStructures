@@ -10,10 +10,10 @@ class MonoStack
 {
 private:
    T* stackArr; //array
-   int count; // current size
-   int top; //index of top
-   int max; //max size of array
-   char o; // increase vs decreasing monostack
+   int m_count; // current size
+   int m_top; //index of m_top
+   int m_max; //m_max size of array
+   char m_o; // increase vs decreasing monostack
 
 public:
     MonoStack();
@@ -23,7 +23,6 @@ public:
     T pop();
     T monoCutShift(int index);
     T peek();
-    T checkFirst();
     bool isEmpty();
     bool isFull();
     int size();   
@@ -31,109 +30,108 @@ public:
 
 template <typename T>
 MonoStack<T>::MonoStack() { // O(1)
-    count = 0;
-    max = 0;
-    top = -1;
-    stackArr = NULL;
+    m_count = 0;
+    m_max = 0;
+    m_top = -1;
+    stackArr = nullptr;
 }
 
 template <typename T>
 MonoStack<T>::MonoStack(int size, char type) { // O(1)
-    count = 0;
-    max = size;
-    top = -1;
-    stackArr = new T[max];
-    o = type;
+    m_count = 0;
+    m_max = size;
+    m_top = -1;
+    stackArr = new T[m_max];
+    m_o = type;
 
-    if (o != 'i' && o != 'd') {
-        throw "Invalid. A monostack may only be increasing(i) or decreasing(d)";
+    if (m_o != 'i' && m_o != 'd') {
+        throw std::invalid_argument("Invalid type: A monostack may only be increasing ('i') or decreasing ('d')");
     } 
 }
 
 template <typename T>
 MonoStack<T>::~MonoStack() { // O(1)
-    if(stackArr != NULL) {
-        delete[] stackArr;
-    }
+    delete[] stackArr;
 }
 
 template <typename T>
 void MonoStack<T>::push(T c) { // O(1) or O(n)
     if (isFull()) {
-       T* temp = new T[2 * max];
-       for (int i = 0; i <= top; ++i) {
+       T* temp = new T[2 * m_max];
+       for (int i = 0; i <= m_top; ++i) {
         temp[i] = stackArr[i];
        }
-       max *= 2;
+       m_max *= 2;
        delete[] stackArr;
        stackArr = temp;
+    }
+    T* tempArr = new T[m_count];
+    int tempTop = -1;
 
-    } else {
-        if (o == 'i') {
-            for (int i = count - 1; i >= 0; --i) {
-                if (stackArr[i] >= c) {
-                    monoCutShift(i);
-                }
+    if (m_o == 'i') { 
+        for (int i = 0; i < m_count; ++i) {
+            if (stackArr[i] < c) {  
+                tempArr[++tempTop] = stackArr[i];
             }
         }
-
-        if (o == 'd') {
-            for (int i = count - 1; i > 0; --i) {
-                if (stackArr[i] <= c) {
-                    monoCutShift(i);
-                }
+    } else if (m_o == 'd') { 
+        for (int i = 0; i < m_count; ++i) {
+            if (stackArr[i] > c) {  
+                tempArr[++tempTop] = stackArr[i];
             }
         }
     }
-
-    stackArr[++top] = c;
-    ++count;
+    
+    tempArr[++tempTop] = c;
+    stackArr = tempArr; 
+    m_top = tempTop; 
+    m_count = m_top + 1;
 }
 
 template <typename T>
 T MonoStack<T>::pop() { // O(1)
-    --count;
-    return stackArr[top--];
-}
-
-template <typename T>
-T MonoStack<T>::monoCutShift(int index) {
-    
-    T cutItem = stackArr[index];
-
-    for (int i = index; i < top; ++i) {
-        stackArr[i] = stackArr[i + 1];
+    if (isEmpty()) {
+        throw std::underflow_error("Nothing to pop");
     }
-
-    --top;
-    --count;
-
-    return cutItem;
+    --m_count;
+    return stackArr[m_top--];
 }
+// template <typename T>
+// T MonoStack<T>::monoCutShift(int index) {
+    
+//     T cutItem = stackArr[index];
+
+//     for (int i = index; i < m_top; ++i) {
+//         stackArr[i] = stackArr[i + 1];
+//     }
+
+//     --m_top;
+//     --m_count;
+
+//     return cutItem;
+// }
 
 template <typename T>
 T MonoStack<T>::peek() { // O(1)
-    return stackArr[top];
-}
-
-template <typename T>
-T MonoStack<T>::checkFirst() {
-    return stackArr[0];
+    if (isEmpty()) {
+        throw std::underflow_error("Nothing to peek at");
+    }
+    return stackArr[m_top];
 }
 
 template <typename T>
 int MonoStack<T>::size() { // O(1)
-    return count;
+    return m_count;
 }
 
 template <typename T>
 bool MonoStack<T>::isEmpty() { // O(1)
-    return top == -1;
+    return m_top == -1;
 }
 
 template <typename T>
 bool MonoStack<T>::isFull() { // O(1)
-    return top == max - 1;
+    return m_top == m_max - 1;
 }
 
 

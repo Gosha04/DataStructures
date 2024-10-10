@@ -2,20 +2,20 @@
 
 int main(int argc, char const *argv[])
 {
-    MonoStack<int> myStack(4, 'i');
+    MonoStack<double> myStack(4, 'd');
 
-    myStack.push(3);
-    myStack.push(4);
-    myStack.push(1);
-    myStack.push(5);
-    myStack.push(7);
+    myStack.push(81.4);
+    myStack.push(90.0);
+    myStack.push(80.8);
+    myStack.push(82.2);
+//     myStack.push(2);
 
-    while (!myStack.isEmpty()) {
-        cout << myStack.pop() << endl;
-    }
+//     while (!myStack.isEmpty()) {
+//         cout << myStack.pop() << endl;
+//     }
 
-    myStack.push(0);
-    myStack.push(11);
+//     myStack.push(0);
+//     myStack.push(11);
 
    while (!myStack.isEmpty()) {
         cout << myStack.pop() << endl;
