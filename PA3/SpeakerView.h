@@ -59,6 +59,8 @@ void SpeakerView::writeToStack() {
                 m_arrOfStack[j]->push(tempStackArr[j]->pop());
             }
         }
+        reader.close();
+        delete[] tempStackArr;
     }
 }
 
