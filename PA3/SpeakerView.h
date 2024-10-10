@@ -18,8 +18,8 @@ public:
     virtual ~SpeakerView();
     void writeToStack(string fileName);
     void countCanSee();
-    void howBigN(string fileName);
-    void howBigP(string filename);
+    // void howBigN(string fileName);
+    // void howBigP(string filename);
 };
 
 SpeakerView::SpeakerView() {
@@ -70,37 +70,37 @@ void SpeakerView::countCanSee() {
     }
 }
 
-int SpeakerView::howBigN(string fileName) {
-    ifstream reader(fileName);    
-    string line;
-    int nSize = 0;
-    if (getline(reader, line) && line == "BEGIN") {
-        while(getline(reader, line)) {
-            if (line == "END") {
-                break;
-            }
-            nSize++;
-        }
-    }
-    reader.close();
-    m_N = nSize;
-}
+// void SpeakerView::howBigN(string fileName) {
+//     ifstream reader(fileName);    
+//     string line;
+//     int nSize = 0;
+//     if (getline(reader, line) && line == "BEGIN") {
+//         while(getline(reader, line)) {
+//             if (line == "END") {
+//                 break;
+//             }
+//             nSize++;
+//         }
+//     }
+//     reader.close();
+//     m_N = nSize;
+// }
 
-void SpeakerView::howBigP(string fileName) {
-    ifstream reader(fileName);    
-    string line;
-    int pSize = 1;
-    if (getline(reader, line) && line == "BEGIN") {
-        getline(reader, line);
+// void SpeakerView::howBigP(string fileName) {
+//     ifstream reader(fileName);    
+//     string line;
+//     int pSize = 1;
+//     if (getline(reader, line) && line == "BEGIN") {
+//         getline(reader, line);
 
-        for (int i = 0; i < line.size(); i++)
-            if (line[i] == ' ') {
-                pSize++;
-            }
-    }
-    reader.close();
-    m_P = pSize;
-}
+//         for (int i = 0; i < line.size(); i++)
+//             if (line[i] == ' ') {
+//                 pSize++;
+//             }
+//     }
+//     reader.close();
+//     m_P = pSize;
+// }
 
 #endif
 
