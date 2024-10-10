@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include "MonoStack.h"
+#include "ATStack.h"
 
 class SpeakerView 
 {
@@ -35,21 +36,30 @@ SpeakerView::~SpeakerView() {
 void SpeakerView::writeToStack() {
     ifstream reader(inputFile);
     string line;
-    MonoStack<double> tempStack (m_P, 'd');
     if (getline(reader, line) && line == "BEGIN") {
         istream_iterator<double> it(reader);   // God bless geeksforgeeks and cppreference for documentation
         istream_iterator<double> end;         // Before using an iterator I kept outputting artifacts and weird symbols
 
+        ATStack<double>** tempStackArr = new ATStack<double>*[m_N];
+        for (int tmp = 0; tmp < m_N; ++tmp) {
+            tempStackArr[tmp] = new ATStack<double>(m_P);
+        }
+
         int stackNum = 0;
         while (stackNum < m_N && it != end) { // Maybe m_N - 1
-            for (int i = 0; i < m_P && it != end; ++i, ++it) {
+            for (int i = 0; i < m_N && it != end; ++i, ++it) {
                 double value = *it;
-                m_arrOfStack[i]->push(value);
-            }
+                tempStackArr[i]->push(value);
+            }   
             stackNum++;
         }
+
+        for (int j = 0; j < m_N; ++j) {
+            while (!tempStackArr[j]->isEmpty()) {
+                m_arrOfStack[j]->push(tempStackArr[j]->pop());
+            }
+        }
     }
-    reader.close();
 }
 
 void SpeakerView::countCanSee() {
