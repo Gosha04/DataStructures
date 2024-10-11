@@ -16,9 +16,9 @@ PA3
 class SpeakerView 
 {
 private:
-    MonoStack<double>** m_arrOfStack;
-    int m_N;
-    int m_P;
+    MonoStack<double>** m_arrOfStack; // array to hold the stacks
+    int m_N; // number of stacks
+    int m_P; // size of each stack
     string inputFile;
     int howBigN();
     int howBigP();
@@ -53,9 +53,9 @@ void SpeakerView::writeToStack() {
         }
 
         int stackNum = 0;
-        while (stackNum < m_N && it != end) { // Maybe m_N - 1
+        while (stackNum < m_N && it != end) {  // Reads each line until we got all our stacks filled
             for (int i = 0; i < m_N && it != end; ++i, ++it) {
-                double value = *it;
+                double value = *it; // What the iterator holds
                 tempStackArr[i]->push(value);
             }   
             stackNum++;
@@ -63,7 +63,7 @@ void SpeakerView::writeToStack() {
 
         for (int j = 0; j < m_N; ++j) {
             while (!tempStackArr[j]->isEmpty()) {
-                m_arrOfStack[j]->push(tempStackArr[j]->pop());
+                m_arrOfStack[j]->push(tempStackArr[j]->pop()); // fill up actual array of stack
             }
         }
         reader.close();

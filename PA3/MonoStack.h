@@ -51,7 +51,7 @@ MonoStack<T>::MonoStack(int size, char type) { // O(1)
     stackArr = new T[m_max];
     m_o = type;
 
-    if (m_o != 'i' && m_o != 'd' && m_o != ' ') {
+    if (m_o != 'i' && m_o != 'd' && m_o != ' ') { // Check to see if a stack is normal, increasing, or decreasing
         throw std::invalid_argument("Invalid type: A monostack may only be increasing ('i') or decreasing ('d')");
     } 
 }
@@ -73,18 +73,19 @@ void MonoStack<T>::push(T c) { // O(1) or O(n)
        stackArr = temp;
     }
     
-    if (m_o == ' ') {
+    if (m_o == ' ') { // normal stack push
         stackArr[++m_top] = c;
         ++m_count;
     } else {
 
-        T* tempArr = new T[m_count + 1];
-        int tempTop = -1;
+        T* tempArr = new T[m_count + 1]; // temp arr to do monoStack ops
+        int tempTop = -1; // Really just the size of the tempArr
 
+        // the temp arr will become our new stackArr
         if (m_o == 'i') { 
             for (int i = 0; i < m_count; ++i) {
-                if (stackArr[i] < c) {  
-                    tempArr[++tempTop] = stackArr[i];
+                if (stackArr[i] < c) { 
+                    tempArr[++tempTop] = stackArr[i]; 
                 }
             }
         } else if (m_o == 'd') { 
@@ -95,6 +96,8 @@ void MonoStack<T>::push(T c) { // O(1) or O(n)
             }
         }
 
+        // switches tempArr to stackArr
+        // the count is tempTop + 1
         tempArr[++tempTop] = c;
         delete[] stackArr;
         stackArr = tempArr; 
