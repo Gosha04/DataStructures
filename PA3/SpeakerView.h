@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA3
+*/
+
 #ifndef SPEAKER_VIEW_H
 #define SPEAKER_VIEW_H
 

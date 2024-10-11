@@ -1,0 +1,20 @@
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA3
+
+Source Files: main.cpp MonoStack.h SpeakerView.h
+
+Errors and Limitations: 
+I had my output output a doubled number one time. It was something like 121.4 90.5 121.4 72.1. I haven't been able to replicate
+this at all and I'm not sure how it happened in the first place but it may occur again.
+
+Refrences:
+I used https://www.geeksforgeeks.org/iterators-c-stl/ and https://en.cppreference.com/w/cpp/iterator/iterator to figure out how
+to properly use an iterator to read my input file
+
+Compile: g++ -o stack main.cpp 
+
+Run: ./stack input
+

@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA3
+*/
+
 #include "SpeakerView.h"
 
 int main(int argc, char const *argv[])
