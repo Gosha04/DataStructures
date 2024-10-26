@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DNASeq.h"
+#include "PalindromeFinder.h"
 
 void runTests() {
 
@@ -34,6 +34,8 @@ void runTests() {
 }
 
 int main() {
-    runTests();
+    //runTests();
+    PalindromeFinder palFind("input");
+    palFind.readSequence();
     return 0;
 }

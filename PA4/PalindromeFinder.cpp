@@ -11,7 +11,7 @@ PalindromeFinder::~PalindromeFinder() {
 
 bool PalindromeFinder::dnaCheck(DNASeq someDNA) {
     for (int i = 0; i < someDNA.getSize(); ++i) {
-        char nucleotide = someDNA.toString()[i];
+        char nucleotide = someDNA.getDna()[i];
         if (nucleotide != 'A' && nucleotide != 'T' &&
             nucleotide != 'C' && nucleotide != 'G') {
             return false;
@@ -65,7 +65,7 @@ void PalindromeFinder::readSequence() {
             continue;
         }
 
-        cout << "Valid Sequence: " << dna.toString() << endl;
+        cout << "Valid Sequence: " << dna.getDna() << endl;
         palindromePrint(dna, 0);  
     }
     m_reader.close(); 

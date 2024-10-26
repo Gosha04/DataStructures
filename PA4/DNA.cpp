@@ -19,15 +19,15 @@ DNASeq::DNASeq(string dnaInput) {
     }
 }
 
-DNASeq::~DNASeq()
-{
-
+DNASeq::~DNASeq() {
+    delete m_list; 
 }
 
 DNASeq DNASeq::complement() {
-    DNASeq compSeq;
+    DNASeq compSeq; 
+    compSeq.m_list = new DblList<char>(); 
     compSeq.m_listSize = m_listSize;
-    
+
     for (int i = 0; i < m_listSize; ++i) {
         char nucleotide = m_list->get(i);
         char comp;
@@ -45,43 +45,36 @@ DNASeq DNASeq::complement() {
             case 'G': 
                 comp = 'C'; 
                 break;
-            // default: throw std::invalid_argument("Invalid DNA character");
+            default: 
+                throw std::invalid_argument("Invalid DNA character");
         }
 
         compSeq.m_list->addBack(comp);
     }
 
-    compSeq.m_listSize = m_listSize;
     return compSeq;
 }
 
 DNASeq DNASeq::subString(int s, int e) {
-    DNASeq subStr;
-
-    for (int i = s; i < e; ++i) {
-        char transfer = get(i);
-        subStr.m_list->addBack(transfer);
-    }
-
-    subStr.m_listSize = e - s;  
-    return subStr;
+    std::string subStr = m_dna.substr(s, e - s); 
+    DNASeq result(subStr); 
+    return result; 
 }
 
 bool DNASeq::isGeneticPalindrome() {
 
-    DNASeq comp = complement();  // Get the complement DNA sequence.
+    DNASeq comp = complement();  
     int i = 0;
 
     while (i < m_listSize / 2) {
         if (m_list->get(i) != comp.m_list->get(m_listSize - 1 - i)) {
-            return false;  // Not a palindrome if characters don't match.
+            return false; 
         }
         ++i; 
     }
 
     return true; 
 }
-
 
 char DNASeq::get(int pos) {
     return m_list->get(pos);
