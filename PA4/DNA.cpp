@@ -20,7 +20,7 @@ DNASeq::DNASeq(string dnaInput) {
 }
 
 DNASeq::~DNASeq() {
-    delete m_list; 
+   // delete m_list; 
 }
 
 DNASeq DNASeq::complement() {
@@ -66,7 +66,7 @@ bool DNASeq::isGeneticPalindrome() {
     DNASeq comp = complement();  
     int i = 0;
 
-    while (i < m_listSize / 2) {
+    while (i < m_listSize) {
         if (m_list->get(i) != comp.m_list->get(m_listSize - 1 - i)) {
             return false; 
         }

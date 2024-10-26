@@ -21,29 +21,23 @@ bool PalindromeFinder::dnaCheck(DNASeq someDNA) {
 }
 
 void PalindromeFinder::palindromePrint(DNASeq someDNA, int start) {
-    cout << "Pal Check ";
     int size = someDNA.getSize();
-    int end = start + m_subLength + 4; 
+    int end = start + m_subLength + 5; 
 
-    if (m_subLength >= size) {
-        cout << "All substrings have been checked." << endl;
-        return;
-    }
-
-    if (start > size - 4 - m_subLength) {
+    if (start >= size - 5 - m_subLength) {
         ++m_subLength;
+        if (m_subLength > size - 1) {
+            return;
+        }
         palindromePrint(someDNA, 0);  
         return;
     }
 
     DNASeq subSeq = someDNA.subString(start, end);
 
-    cout << "Substring [" << start << "-" << end << "]: " << subSeq.toString();
-
     if (subSeq.isGeneticPalindrome()) {
+        cout << "Substring [" << start << "-" << end << "]: " << subSeq.toString();
         cout << " - Palindrome" << endl;
-    } else {
-        cout << " - Not a palindrome" << endl;
     }
 
     palindromePrint(someDNA, start + 1);
@@ -65,7 +59,13 @@ void PalindromeFinder::readSequence() {
             continue;
         }
 
-        cout << "Valid Sequence: " << dna.getDna() << endl;
+        cout << "Valid Sequence: " << dna.getDna(); 
+        if (dna.isGeneticPalindrome()) {
+            cout << " - Palindrome" << endl;
+        } else {
+            cout << " - Not a Palindrome" << endl;
+        }
+        m_subLength = 0; 
         palindromePrint(dna, 0);  
     }
     m_reader.close(); 
