@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA4
+*/
+
 #ifndef LIST_NODE_H
 #define LIST_NODE_H
 

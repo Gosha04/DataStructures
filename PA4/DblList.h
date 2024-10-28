@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA4
+*/
+
 #ifndef DBL_LIST_H
 #define DBL_LIST_H
 

@@ -1,3 +1,11 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA4
+*/
+
 #include "PalindromeFinder.h"
 
 PalindromeFinder::PalindromeFinder(string fileName) {
@@ -20,17 +28,24 @@ bool PalindromeFinder::dnaCheck(DNASeq someDNA) {
     return true;
 }
 
-void PalindromeFinder::palindromePrint(DNASeq someDNA, int start) {
+/*
+Fairly straightforward in theory, less so in practice.
+Basically I started with substring of length 4 whose start kept getting pushed up until it hits the end of the sequence
+Then the substring length increases and we start at index 0 again
+The general structure is that the start increases until it can't, which causes m_subLength to increase, and when that taps out
+we move onto the next sequence. This is recursive.
+*/
+void PalindromeFinder::sequenceSubstringOps(DNASeq someDNA, int start) {
     int size = someDNA.getSize();
     int lim = 5;
-    int end = start + m_subLength + lim; 
+    int end = start + m_subLength + lim;
 
     if (start >= size - lim - m_subLength) {
         ++m_subLength;
         if (m_subLength > size - 1) {
             return;
         }
-        palindromePrint(someDNA, 0);  
+        sequenceSubstringOps(someDNA, 0);  
         return;
     }
 
@@ -41,7 +56,7 @@ void PalindromeFinder::palindromePrint(DNASeq someDNA, int start) {
         cout << " - Palindrome" << endl;
     }
 
-    palindromePrint(someDNA, start + 1);
+    sequenceSubstringOps(someDNA, start + 1);
 }
 
 void PalindromeFinder::readSequence() {
@@ -67,7 +82,7 @@ void PalindromeFinder::readSequence() {
             cout << " - Not a Palindrome" << endl;
         }
         m_subLength = 0; 
-        palindromePrint(dna, 0);  
+        sequenceSubstringOps(dna, 0);  
     }
     m_reader.close(); 
 }

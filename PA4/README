@@ -1,0 +1,18 @@
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA4
+
+Source Files: main.cpp PalindromeFinder.cpp DNASeq.cpp DblList.h ListNode.h
+
+Errors and Limitations: 
+N/A
+
+Refrences:
+
+Compile: g++ -o DNA.exe *.cpp
+
+Run: ./DNA.exe input
+Note - input can be substituted for any file with a correctly formatted list of DNA Sequences
+
