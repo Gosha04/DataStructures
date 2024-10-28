@@ -20,7 +20,7 @@ DNASeq::DNASeq(string dnaInput) {
 }
 
 DNASeq::~DNASeq() {
-   // delete m_list; 
+    
 }
 
 DNASeq DNASeq::complement() {
@@ -45,8 +45,6 @@ DNASeq DNASeq::complement() {
             case 'G': 
                 comp = 'C'; 
                 break;
-            default: 
-                throw std::invalid_argument("Invalid DNA character");
         }
 
         compSeq.m_list->addBack(comp);
@@ -86,13 +84,4 @@ string DNASeq::getDna() {
 
 int DNASeq::getSize() {
     return m_listSize;
-}
-
-string DNASeq::toString() {
-    string result;
-    for (int i = 0; i < m_listSize; ++i) {
-        result += get(i);
-    }
-
-    return result;
 }

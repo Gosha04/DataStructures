@@ -22,9 +22,10 @@ bool PalindromeFinder::dnaCheck(DNASeq someDNA) {
 
 void PalindromeFinder::palindromePrint(DNASeq someDNA, int start) {
     int size = someDNA.getSize();
-    int end = start + m_subLength + 5; 
+    int lim = 5;
+    int end = start + m_subLength + lim; 
 
-    if (start >= size - 5 - m_subLength) {
+    if (start >= size - lim - m_subLength) {
         ++m_subLength;
         if (m_subLength > size - 1) {
             return;
@@ -36,7 +37,7 @@ void PalindromeFinder::palindromePrint(DNASeq someDNA, int start) {
     DNASeq subSeq = someDNA.subString(start, end);
 
     if (subSeq.isGeneticPalindrome()) {
-        cout << "Substring [" << start << "-" << end << "]: " << subSeq.toString();
+        cout << "   Substring [" << start << "-" << end << "]: " << subSeq.getDna();
         cout << " - Palindrome" << endl;
     }
 
