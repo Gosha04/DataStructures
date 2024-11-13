@@ -23,7 +23,8 @@ public:
     void sequenceSubstringOps(DNASeq someDNA, int start); //Checks and prints Sequences and their palindromic(?) substrings
     // more info in PalindromeFinder.cpp
     bool dnaCheck(DNASeq someDna); // Checks the validity of a DNA Sequence
-    void readSequence(); // Reads sequences from an input file and checks them for validity
+    void readSequence(); // Reads sequences from an input file and checks them for validity. Then calls the substring operator
+    // to check the sequences substrings
 };
 
 #endif

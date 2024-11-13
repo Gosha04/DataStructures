@@ -263,7 +263,7 @@ void BST<T>::remove(T key) {
     
     if (target == NULL) {
         return;
-    } else if ((target -> m_left == NULL) && (target -> m_right)) { // it's a leaf
+    } else if ((target -> m_left == NULL) && (target -> m_right == NULL)) { // it's a leaf
         if (target == m_root) {
             m_root = NULL;
         } else {
@@ -274,7 +274,7 @@ void BST<T>::remove(T key) {
             }
         }
     } else if ((target -> m_left != NULL) && (target -> m_right != NULL)) {
-        TreeNode<T>* suc = getSuccessor(target);
+        TreeNode<T>* suc = getSuccessor(target -> m_right);
         T value = suc -> m_data;
         remove(value);
     } else {

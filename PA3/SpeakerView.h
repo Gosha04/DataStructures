@@ -9,6 +9,7 @@ PA3
 #ifndef SPEAKER_VIEW_H
 #define SPEAKER_VIEW_H
 
+#include <iterator>
 #include <fstream>
 #include <string>
 #include "MonoStack.h"
