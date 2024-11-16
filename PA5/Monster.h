@@ -6,12 +6,15 @@
 class Monster
 {
 private:
-    int screamPower;
-    std::string name;
+    int m_screamPower;
+    std::string m_name;
 public:
+    Monster();
     Monster(std::string name, int screamPower);
     virtual ~Monster();
-    bool compare();
+    bool screamFight(Monster otherMonster);
+    int getScream();
+    std::string getName();
 };
 
 #endif
