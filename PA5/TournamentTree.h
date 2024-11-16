@@ -3,9 +3,8 @@
 class TournamentTree
 {
 private:
-    int screamPower;
-    std::string name;
+    
 public:
-    TournamentTree(std::string name, int screamPower);
+    TournamentTree(/* stuff goes here */);
     virtual ~TournamentTree();
 };
