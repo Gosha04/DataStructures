@@ -60,6 +60,20 @@ Monster TournamentTree::singleElim(std::string file) {
     return singleTree.m_root -> m_data;
 }
 
+Monster TournamentTree::doubleElim(std::string file) {
+    TournamentTree doubleTree(file);
+    tournamentHelper(doubleTree.m_root);
+    return doubleTree.m_root -> m_data;
+}
+
+Monster TournamentTree::finalWinner(Monster first, Monster second) {
+    if (first.screamFight(second)) {
+        return first;
+    } else {
+        return second;
+    }
+}
+
 void TournamentTree::tournamentHelper(TournamentNode* root) {
     if (root == nullptr) {
         return;

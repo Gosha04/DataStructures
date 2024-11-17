@@ -17,5 +17,7 @@ public:
     void createTree(std::vector<Monster> bracket);
     void populateTree(std::vector<Monster> bracket);
     Monster singleElim(std::string file);
+    Monster doubleElim(std::string file);
+    Monster finalWinner(Monster first, Monster second);
     void tournamentHelper(TournamentNode* root);
 };
