@@ -13,5 +13,5 @@ public:
     TournamentNode();
     TournamentNode(Monster monster);
     virtual ~TournamentNode();
-    void fight();
+    Monster fight();
 };

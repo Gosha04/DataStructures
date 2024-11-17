@@ -18,10 +18,12 @@ TournamentNode::~TournamentNode() {
     
 }
 
-void TournamentNode::fight() {
+Monster TournamentNode::fight() {
     if (m_left-> m_data.screamFight(m_right -> m_data)) {
         m_winner = m_left;
     } else {
         m_winner = m_right;
     }
+
+    return m_winner -> m_data;
 }

@@ -16,4 +16,6 @@ public:
     virtual ~TournamentTree();
     void createTree(std::vector<Monster> bracket);
     void populateTree(std::vector<Monster> bracket);
+    Monster singleElim(std::string file);
+    void tournamentHelper(TournamentNode* root);
 };

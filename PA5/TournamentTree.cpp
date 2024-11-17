@@ -7,6 +7,7 @@ TournamentTree::TournamentTree(std::string file) {
     while (m_reader >> name >> screamPower) {
         m_primaryBracket.push_back(Monster(name, screamPower));
     }
+
 }
 
 void TournamentTree::createTree(std::vector<Monster> bracket) {
@@ -49,7 +50,32 @@ void TournamentTree::populateTreeHelper(std::vector<Monster> bracket, Tournament
         return;
     }
 
-    // Recursive case: Traverse left and right subtrees
     populateTreeHelper(bracket, root->m_left, index);
     populateTreeHelper(bracket, root->m_right, index);
+}
+
+Monster TournamentTree::singleElim(std::string file) {
+    TournamentTree singleTree(file);
+    tournamentHelper(singleTree.m_root);
+    return singleTree.m_root -> m_data;
+}
+
+void TournamentTree::tournamentHelper(TournamentNode* root) {
+    if (root == nullptr) {
+        return;
+    }  
+
+    tournamentHelper(root->m_left);
+    tournamentHelper(root->m_right);
+  
+
+    if (root -> m_left != nullptr && root -> m_right != nullptr) {
+        if (root -> m_left -> m_hasData && root -> m_right -> m_hasData) {
+            Monster loser = root -> fight(); 
+            m_losersBracket.push_back(loser);
+        }
+    } else if (root -> m_left != nullptr && root -> m_left -> m_hasData) {
+        root -> m_data = root -> m_left -> m_data; 
+        root -> m_hasData = true;
+    }
 }
