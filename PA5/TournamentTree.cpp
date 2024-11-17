@@ -1,13 +1,17 @@
 #include "TournamentTree.h"
 
+TournamentTree::TournamentTree(std::vector<Monster> bracket) {
+    m_bracket = bracket;
+}
+
 TournamentTree::TournamentTree(std::string file) {
-    m_reader.open(file);
+    m_file = file;
+    m_reader.open(m_file);
     std::string name;
     int screamPower;
     while (m_reader >> name >> screamPower) {
-        m_primaryBracket.push_back(Monster(name, screamPower));
+        m_bracket.push_back(Monster(name, screamPower));
     }
-
 }
 
 void TournamentTree::createTree(std::vector<Monster> bracket) {
@@ -54,19 +58,21 @@ void TournamentTree::populateTreeHelper(std::vector<Monster> bracket, Tournament
     populateTreeHelper(bracket, root->m_right, index);
 }
 
-Monster TournamentTree::singleElim(std::string file) {
-    TournamentTree singleTree(file);
+Monster TournamentTree::singleElim() {
+    TournamentTree singleTree(m_file);
     tournamentHelper(singleTree.m_root);
     return singleTree.m_root -> m_data;
 }
 
-Monster TournamentTree::doubleElim(std::string file) {
-    TournamentTree doubleTree(file);
+Monster TournamentTree::doubleElim() {
+    TournamentTree doubleTree(m_losersBracket);
     tournamentHelper(doubleTree.m_root);
     return doubleTree.m_root -> m_data;
 }
 
-Monster TournamentTree::finalWinner(Monster first, Monster second) {
+Monster TournamentTree::finalWinner() {
+    Monster first = singleElim();
+    Monster second = doubleElim();
     if (first.screamFight(second)) {
         return first;
     } else {
