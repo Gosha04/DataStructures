@@ -12,6 +12,8 @@ TournamentTree::TournamentTree(std::string file) {
     while (m_reader >> name >> screamPower) {
         m_bracket.push_back(Monster(name, screamPower));
     }
+    createTree(m_bracket); // should be this
+    populateTree(m_bracket);
 }
 
 void TournamentTree::createTree(std::vector<Monster> bracket) {
