@@ -124,7 +124,8 @@ Monster TournamentTree::finalWinner() {
 }
 
 void TournamentTree::tournamentHelper(TournamentNode* root) {
-    if (root == nullptr) {
+    std::cout << "CURRENT NODE: " << root -> m_data.getName() << std::endl;
+    if (root -> m_left == nullptr && root -> m_right == nullptr) {
         return;
     }  
 
@@ -136,22 +137,16 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
         std::cout << "Right Node: " << root->m_right->m_data.getName() << std::endl;
     } 
 
+    std::cout << "Go Left" << std::endl;
     tournamentHelper(root->m_left);
+    std::cout << "Go Right" << std::endl;
     tournamentHelper(root->m_right);
 
-    if (root -> m_left != nullptr && root -> m_right != nullptr) {
-        // std::cout << "Left Node: " << root -> m_left -> m_data.getName() << std::endl;
-        // std::cout << "Right Node: " << root -> m_right -> m_data.getName() << std::endl;
-        if (root -> m_left -> m_hasData && root -> m_right -> m_hasData) {
-            // std::cout << "Left Node: " << root -> m_left -> m_data.getName() << std::endl;
-            // std::cout << "Right Node: " << root -> m_right -> m_data.getName() << std::endl;
-            m_losersBracket.push_back(root -> fight());
-            //std::cout << loser.getName();
-        }
-    } else if (root -> m_left != nullptr && root -> m_left -> m_hasData) {
-        root -> m_data = root -> m_left -> m_data; 
-        root -> m_hasData = true;
-    }
+   if (root -> m_left -> m_hasData && root -> m_right -> m_hasData) {
+        root -> fight();
+   } else if (root -> m_left -> m_hasData) {
+        root = root -> m_left;
+   }
 }
 
 void TournamentTree::printLosers() {
