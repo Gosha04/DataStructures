@@ -35,33 +35,21 @@ Monster TournamentNode::fight() {
     return loser;
 }
 
-Monster TournamentNode::getWinner() {
-    return m_data;
+int main(int argc, char const *argv[])
+{
+    Monster meh("Mike", 4);
+    Monster scarey("Sulley", 10);
+
+    TournamentNode* root = new TournamentNode();
+
+    TournamentNode* left = new TournamentNode(meh);
+    TournamentNode* right = new TournamentNode(scarey);
+
+    // switch this back to private after testing
+    root -> m_left = left;
+    root -> m_right = right;
+
+    std::cout << root->fight().getName() << std::endl;
+
+    return 0;
 }
-
-TournamentNode* TournamentNode::getRight() {
-    return m_right;
-}
-
-TournamentNode* TournamentNode::getLeft() {
-    return m_left;
-}
-
-// int main(int argc, char const *argv[])
-// {
-//     Monster meh("Mike", 4);
-//     Monster scarey("Sulley", 10);
-
-//     TournamentNode* root = new TournamentNode();
-
-//     TournamentNode* left = new TournamentNode(meh);
-//     TournamentNode* right = new TournamentNode(scarey);
-
-//     // switch this back to private after testing
-//     root -> m_left = left;
-//     root -> m_right = right;
-
-//     std::cout << root->fight().getName() << std::endl;
-
-//     return 0;
-// }

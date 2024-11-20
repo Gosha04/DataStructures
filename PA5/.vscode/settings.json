@@ -64,10 +64,6 @@
         "chrono": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
-        "algorithm": "cpp",
-        "execution": "cpp",
-        "iostream": "cpp",
-        "print": "cpp",
-        "queue": "cpp"
+        "algorithm": "cpp"
     }
 }

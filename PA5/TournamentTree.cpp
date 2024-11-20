@@ -1,18 +1,13 @@
 #include "TournamentTree.h"
-#include "TournamentNode.h"
-#include <iostream>
 
 TournamentTree::TournamentTree(std::vector<Monster> bracket) {
     m_bracket = bracket;
     createTree(m_bracket);
     populateTree(m_bracket);
-    saveTreeAsDot(out_file, finalWinner());
 }
 
-TournamentTree::TournamentTree(std::string inFile, std::string outFile, std::string gameType) {
-    m_file = inFile;
-    out_file = outFile;
-    m_type = gameType;
+TournamentTree::TournamentTree(std::string file) {
+    m_file = file;
     m_reader.open(m_file);
     std::string name;
     int screamPower;
@@ -21,12 +16,6 @@ TournamentTree::TournamentTree(std::string inFile, std::string outFile, std::str
     }
     createTree(m_bracket); // should be the member bracket
     populateTree(m_bracket);
-    if (m_type == "double") {
-        doubleElim();
-    } else {
-        singleElim();
-    }
-    saveTreeAsDot(out_file, finalWinner());
 }
 
 void TournamentTree::createTree(std::vector<Monster> bracket) {
@@ -74,7 +63,7 @@ void TournamentTree::populateTreeHelper(std::vector<Monster> bracket, Tournament
 }
 
 Monster TournamentTree::singleElim() {
-    TournamentTree singleTree(m_file, out_file, "single");
+    TournamentTree singleTree(m_file);
     tournamentHelper(singleTree.m_root);
     return singleTree.m_root -> m_data;
 }
@@ -112,41 +101,5 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
     } else if (root -> m_left != nullptr && root -> m_left -> m_hasData) {
         root -> m_data = root -> m_left -> m_data; 
         root -> m_hasData = true;
-    }
-}
-
-// Function to save the tree as a DOT file
-void saveTreeAsDot(const std::string& filename, TournamentNode* rootNode) {
-    std::ofstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Failed to open file for DOT output: " << filename << "\n";
-        return;
-    }
-
-    file << "digraph TournamentTree {\n";
-    int nodeID = 0;
-    saveTreeAsDotHelper(rootNode, file, nodeID);
-    file << "}\n";
-    file.close();
-}
-
-// Recursive helper function for DOT file generation
-void saveTreeAsDotHelper(TournamentNode* node, std::ofstream& file, int& nodeID) {
-    if (node == NULL) return;
-
-    int currentID = nodeID++;
-    file << "    node" << currentID << " [label=\"" << node->getWinner().getName()
-         << " (Power: " << node->getWinner().getScream() << ")\"];\n";
-
-    if (node->getLeft()) {
-        int leftID = nodeID;
-        saveTreeAsDotHelper(node->getLeft(), file, nodeID);
-        file << "    node" << currentID << " -> node" << leftID << ";\n";
-    }
-
-    if (node->getRight()) {
-        int rightID = nodeID;
-        saveTreeAsDotHelper(node->getRight(), file, nodeID);
-        file << "    node" << currentID << " -> node" << rightID << ";\n";
     }
 }
