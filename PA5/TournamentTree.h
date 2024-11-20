@@ -10,8 +10,8 @@ private:
     std::string m_file;
     TournamentNode* m_root;
     int m_bracketSize;
-    void createTreeHelper(TournamentNode* root);
-    void populateTreeHelper(std::vector<Monster> bracket, TournamentNode* root, int index);
+    void createTreeHelper(TournamentNode*& root, int& currSize, int currentLvl, std::vector<Monster>& bracket, int& index);
+    void populateTreeHelper(std::vector<Monster> bracket, TournamentNode*& root, int& index);
 public:
     TournamentTree(std::vector<Monster> bracket);
     TournamentTree(std::string file);
@@ -21,5 +21,7 @@ public:
     Monster singleElim();
     Monster doubleElim();
     Monster finalWinner();
+    void printLosers();
     void tournamentHelper(TournamentNode* root);
+    int calculateMinHeight(int numLeaves);
 };
