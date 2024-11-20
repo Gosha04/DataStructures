@@ -130,16 +130,11 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
 
     if (root->m_left != nullptr) {
         std::cout << "Left Node: " << root->m_left->m_data.getName() << std::endl;
-    } else {
-        std::cout << "Left Node is null" << std::endl;
-    }
+    } 
 
     if (root->m_right != nullptr) {
         std::cout << "Right Node: " << root->m_right->m_data.getName() << std::endl;
-    } else {
-        std::cout << "Right Node is null" << std::endl;
-    }
-
+    } 
 
     tournamentHelper(root->m_left);
     tournamentHelper(root->m_right);
@@ -170,7 +165,7 @@ int main(int argc, char const *argv[])
 {
     TournamentTree tree("input");
     std::cout << tree.singleElim().getName() << std::endl;
-    //tree.printLosers();
+    tree.printLosers();
     //std::cout << tree.doubleElim().getName();
     return 0;
 }

@@ -43,42 +43,42 @@ void TournamentNode::setData(Monster monster) {
     m_data = monster;
 }
 
-// int main(int argc, char const *argv[])
-// {
-//     Monster meh("Mike", 4);
-//     Monster A("A", 1);
-//     Monster scarey("Sulley", 10);
-//     Monster B("B", 0);
+int main(int argc, char const *argv[])
+{
+    Monster meh("Mike", 4);
+    Monster A("A", 1);
+    Monster scarey("Sulley", 10);
+    Monster B("B", 0);
 
-//     TournamentNode* root = new TournamentNode();
-//     TournamentNode* rl = new TournamentNode();
-//     TournamentNode* rr = new TournamentNode();
-
-
-
-//     TournamentNode* l1 = new TournamentNode(meh);
-//     TournamentNode* l2 = new TournamentNode(A);
-//     TournamentNode* r1 = new TournamentNode(scarey);
-//     TournamentNode* r2 = new TournamentNode(B);
+    TournamentNode* root = new TournamentNode();
+    TournamentNode* rl = new TournamentNode();
+    TournamentNode* rr = new TournamentNode();
 
 
-//     // switch this back to private after testing
-//     root -> m_left = rl;
-//     root -> m_right = rr;
 
-//     rl -> m_left = l1;
-//     rl -> m_right = l2;
-
-//     rr -> m_left = r1;
-//     rr -> m_right = r2;
+    TournamentNode* l1 = new TournamentNode(meh);
+    TournamentNode* l2 = new TournamentNode(A);
+    TournamentNode* r1 = new TournamentNode(scarey);
+    TournamentNode* r2 = new TournamentNode(B);
 
 
-//     std::cout << rl->fight().getName() << std::endl;
-//     // rl->setData(rl -> m_winner -> m_data);
-//     std::cout << rr->fight().getName() << std::endl;
-//     // rr->setData(rr -> m_winner -> m_data);
-//     std::cout << root -> fight().getName() << std::endl;
+    // switch this back to private after testing
+    root -> m_left = rl;
+    root -> m_right = rr;
+
+    rl -> m_left = l1;
+    rl -> m_right = l2;
+
+    rr -> m_left = r1;
+    rr -> m_right = r2;
 
 
-//     return 0;
-// }
+    rl->fight();
+    // rl->setData(rl -> m_winner -> m_data);
+    rr->fight();
+    // rr->setData(rr -> m_winner -> m_data);
+    root -> fight();
+
+
+    return 0;
+}
