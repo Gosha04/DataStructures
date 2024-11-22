@@ -28,79 +28,62 @@ TournamentTree::~TournamentTree () {
 }
 
 void TournamentTree::createTree(std::vector<Monster> bracket) {
+    while ((bracket.size() & (bracket.size() - 1)) != 0) {
+        bracket.push_back(Monster("BYE", -1)); // Add a placeholder "BYE" monster
+    }
+
+    std::cout << bracket.size() << std::endl;
+
     m_bracketSize = (2 * bracket.size()) - 1; // Total nodes in a full binary tree
     int currSize = 0;                         // Track current size of the tree
     int index = 0;
-    createTreeHelper(m_root, currSize, 0, m_bracket, index);       // Build the tree
+    createTreeHelper(m_root, currSize, 0, bracket, index);       // Build the tree
 }
 
 void TournamentTree::createTreeHelper(TournamentNode*& root, int& currSize, int currentLvl, std::vector<Monster>& bracket,
 int& index) {
-    int height = calculateMinHeight(m_bracket.size()); // geeks for geeks
-    std::cout << "Height: " << currentLvl << std::endl;
+    int height = calculateMinHeight(bracket.size()); // geeks for geeks
+    std::cout << "Level: " << currentLvl << std::endl;
     // Stop recursion if we've created all required nodes
-    if (currSize >= m_bracketSize || currentLvl > height) {
+    if (currSize > m_bracketSize || currentLvl > height) {
         return;
     }
 
-    // Create a new node if it doesn't exist
     if (root == nullptr) {
         root = new TournamentNode();
+        root -> m_hasData = false;
         ++currSize;
     }
 
 
-    if (currentLvl == height) {
+    if (currentLvl == height - 1) {
+        if (index >= m_bracketSize - 2) {
+            root->m_data = bracket[index];
+            root->m_hasData = true;
+            std::cout << "Populating node with: " << root->m_data.getName() << std::endl;
+            ++index;
+        }
+    } else if (currentLvl == height) {
         root->m_data = bracket[index];
+        root->m_hasData = true;
         std::cout << "Populating node with: " << root->m_data.getName() << std::endl;
-        ++index;  // Move to the next monster in the bracket
+        ++index;
     }
 
-    createTreeHelper(root->m_left, currSize, currentLvl + 1, m_bracket, index);
-    createTreeHelper(root->m_right, currSize, currentLvl + 1, m_bracket, index);
+    createTreeHelper(root->m_left, currSize, currentLvl + 1, bracket, index);
+    createTreeHelper(root->m_right, currSize, currentLvl + 1, bracket, index);
 }
 
 int TournamentTree::calculateMinHeight (int numLeaves) {
     if (numLeaves <= 0) {
-        std::cerr << "Number of leaves must be positive." << std::endl;
-        return -1;  // Return an error code for invalid input
+        return -1; 
     }
     
     // Calculate the height by taking the log base 2 of the number of leaves
-    int height = static_cast<int>(std::ceil(std::log2(numLeaves)));
+    int height = std::ceil(std::log2(numLeaves));
     
     return height;
 }
-
-
-
-// void TournamentTree::populateTree(std::vector<Monster> bracket) {
-//     int index = 0;
-//     populateTreeHelper(bracket, m_root, index);
-// }
-
-// void TournamentTree::populateTreeHelper(std::vector<Monster> bracket, TournamentNode*& root, int& index) {
-//     std::cout << "Index: " << index << std::endl;
-//     std::cout << "Bracket thing: " << bracket[index].getName() << std::endl;
-//     if (index >= bracket.size()) {
-//         return; 
-//     }
-
-//     // If the node is a leaf, assign data from the bracket
-//     if (root->m_left == nullptr && root->m_right == nullptr) {
-//         if (!root->m_hasData) {
-//             root->m_data = bracket[index];
-//             root->m_hasData = true;
-//             std::cout << "Populating node with: " << root->m_data.getName() << std::endl;  // Debug output
-//             ++index;  // Move to the next monster
-//         }
-//     }
-
-//     // Recurse into left and right children to populate the tree
-//     populateTreeHelper(bracket, root->m_left, index);
-//     populateTreeHelper(bracket, root->m_right, index);
-// }
-
 
 Monster TournamentTree::singleElim() {
     tournamentHelper(m_root);
@@ -108,13 +91,23 @@ Monster TournamentTree::singleElim() {
 }
 
 Monster TournamentTree::doubleElim() {
-    TournamentTree doubleTree(m_losersBracket);
-    tournamentHelper(doubleTree.m_root);
-    return doubleTree.m_root -> m_data;
+    int i = 0;
+    while (i < m_losersBracket.size()) {
+        if (m_losersBracket[i].getName() == "BYE" || m_losersBracket[i].getName() == "") {
+            m_losersBracket.erase(m_losersBracket.begin() + i);
+        } else {
+            ++i; 
+        }
+    }
+    printLosers();
+    // TournamentTree doubleTree(m_losersBracket);
+    tournamentHelper(m_root);
+    return m_root -> m_data;
 }
 
 Monster TournamentTree::finalWinner() {
     Monster first = singleElim();
+    printLosers();
     Monster second = doubleElim();
     if (first.screamFight(second)) {
         return first;
@@ -139,28 +132,35 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
 
     std::cout << "Go Left" << std::endl;
     tournamentHelper(root->m_left);
-    std::cout << "Go Right" << std::endl;
-    tournamentHelper(root->m_right);
+    if (root -> m_right != nullptr) {
+        std::cout << "Go Right" << std::endl;
+        tournamentHelper(root->m_right);
+    }
 
-   if (root -> m_left -> m_hasData && root -> m_right -> m_hasData) {
-        root -> fight();
-   } else if (root -> m_left -> m_hasData) {
-        root = root -> m_left;
-   }
+    if (root -> m_left && root -> m_right) {
+        m_losersBracket.push_back(root -> fight());
+    }
+    // } else if (root -> m_left) {
+    //     root -> m_left -> m_hasData = false;
+    //     root = root -> m_left;
+    //     root ->  m_hasData = true;
+    // }
 }
 
 void TournamentTree::printLosers() {
-    std::cout << "\n" << m_losersBracket.size();
+    std::cout << "\nLOSER Size: " << m_losersBracket.size() << std::endl;
     for (int i = 0; i < m_losersBracket.size(); ++i) {
         std::cout << m_losersBracket[i].getName() << std::endl;
     }
 }
 
-int main(int argc, char const *argv[])
-{
-    TournamentTree tree("input");
-    std::cout << tree.singleElim().getName() << std::endl;
-    tree.printLosers();
-    //std::cout << tree.doubleElim().getName();
-    return 0;
-}
+// int main(int argc, char const *argv[])
+// {
+    // TournamentTree tree("input");
+    // // std::cout << tree.singleElim().getName() << std::endl;
+    // // tree.singleElim();
+    // // tree.printLosers();
+    // // std::cout << "Loser Tree: " << tree.doubleElim().getName();
+    // std::cout << "\n" << tree.finalWinner().getName() << std::endl;
+    // return 0;
+// }

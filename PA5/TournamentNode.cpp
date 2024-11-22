@@ -25,13 +25,30 @@ TournamentNode::~TournamentNode() {
 Monster TournamentNode::fight() {
     Monster loser;
     std::cout << "Fighting: " << m_left->m_data.getName() << " vs " << m_right->m_data.getName() << std::endl;
-    if (m_left->m_data.screamFight(m_right->m_data)) {
+    if (m_left -> m_data.getScream() == m_right -> m_data.getScream()) {
         m_winner = m_left;
         setData(m_winner->m_data);
         loser = m_right->m_data;
+        return loser;
+    }
+    if (m_right -> m_hasData) {
+        if (m_left->m_data.screamFight(m_right->m_data)) {
+            m_winner = m_left;
+            setData(m_winner->m_data);
+            loser = m_right->m_data;
+        } else {
+            m_winner = m_right;
+            loser = m_left->m_data;
+        }   
     } else {
-        m_winner = m_right;
-        loser = m_left->m_data;
+        if (m_right == nullptr) {
+            m_winner = m_left;
+            setData(m_winner -> m_data);
+            loser = Monster();
+        }
+        m_winner = m_left;
+        setData(m_winner -> m_data);
+        loser = m_right -> m_data;
     }
     std::cout << "Loser: " << loser.getName() << std::endl;
     return loser;

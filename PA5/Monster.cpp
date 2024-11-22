@@ -29,3 +29,4 @@ int Monster::getScream() {
 std::string Monster::getName() {
     return m_name;
 }
+

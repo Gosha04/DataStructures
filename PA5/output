@@ -1,0 +1,31 @@
+digraph TournamentTree {
+    node0 [label="Sulley (Power: 10)"];
+    node1 [label="Sulley (Power: 10)"];
+    node2 [label="Sulley (Power: 10)"];
+    node3 [label="Sulley (Power: 10)"];
+    node2 -> node3;
+    node4 [label="Mike (Power: 4)"];
+    node2 -> node4;
+    node1 -> node2;
+    node5 [label="A (Power: 1)"];
+    node6 [label="A (Power: 1)"];
+    node5 -> node6;
+    node7 [label="B (Power: 0)"];
+    node5 -> node7;
+    node1 -> node5;
+    node0 -> node1;
+    node8 [label="Testy (Power: 2)"];
+    node9 [label="Testy (Power: 2)"];
+    node10 [label="Testy (Power: 2)"];
+    node9 -> node10;
+    node11 [label="BYE (Power: -1)"];
+    node9 -> node11;
+    node8 -> node9;
+    node12 [label="BYE (Power: -1)"];
+    node13 [label="BYE (Power: -1)"];
+    node12 -> node13;
+    node14 [label="BYE (Power: -1)"];
+    node12 -> node14;
+    node8 -> node12;
+    node0 -> node8;
+}
