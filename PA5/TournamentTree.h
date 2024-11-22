@@ -10,8 +10,10 @@ private:
     int m_bracketSize;
     void createTreeHelper(TournamentNode*& root, int& currSize, int currentLvl, std::vector<Monster>& bracket, int& index);
     void tournamentHelper(TournamentNode* root);
-    
+
 public:
+    TournamentTree();
+    std::vector<Monster> m_finals;
     std::vector<Monster> m_losersBracket;
     TournamentNode* m_root;
     TournamentTree(std::vector<Monster> bracket);

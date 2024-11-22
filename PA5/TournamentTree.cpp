@@ -20,7 +20,6 @@ TournamentTree::TournamentTree(std::string file) {
         std::cout<< m_bracket.size()<< std::endl;
     } 
     createTree(m_bracket); // should be the member bracket
-    // populateTree(m_bracket);
 }
 
 TournamentTree::~TournamentTree () {
@@ -100,19 +99,18 @@ Monster TournamentTree::doubleElim() {
         }
     }
     printLosers();
-    // TournamentTree doubleTree(m_losersBracket);
     tournamentHelper(m_root);
     return m_root -> m_data;
 }
 
 Monster TournamentTree::finalWinner() {
-    Monster first = singleElim();
-    printLosers();
-    Monster second = doubleElim();
-    if (first.screamFight(second)) {
-        return first;
+    m_finals.push_back(singleElim());
+    // printLosers();
+    m_finals.push_back(doubleElim());
+    if (m_finals[0].screamFight(m_finals[1])) {
+        return m_finals[0];
     } else {
-        return second;
+        return m_finals[1];
     }
 }
 
@@ -140,11 +138,6 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
     if (root -> m_left && root -> m_right) {
         m_losersBracket.push_back(root -> fight());
     }
-    // } else if (root -> m_left) {
-    //     root -> m_left -> m_hasData = false;
-    //     root = root -> m_left;
-    //     root ->  m_hasData = true;
-    // }
 }
 
 void TournamentTree::printLosers() {
@@ -153,14 +146,3 @@ void TournamentTree::printLosers() {
         std::cout << m_losersBracket[i].getName() << std::endl;
     }
 }
-
-// int main(int argc, char const *argv[])
-// {
-    // TournamentTree tree("input");
-    // // std::cout << tree.singleElim().getName() << std::endl;
-    // // tree.singleElim();
-    // // tree.printLosers();
-    // // std::cout << "Loser Tree: " << tree.doubleElim().getName();
-    // std::cout << "\n" << tree.finalWinner().getName() << std::endl;
-    // return 0;
-// }

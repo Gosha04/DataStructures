@@ -55,6 +55,13 @@ int main(int argc, char const *argv[])
     saveTreeAsDot("output", tree.m_root);
     saveTreeAsDot("doubleOut", doubleTree.m_root);
 
+    TournamentNode* root = new TournamentNode();
+    root -> m_left = tree.m_root;
+    root -> m_right = doubleTree.m_root;
+    root->fight();
+
+    saveTreeAsDot("winnerOut", root); // really only need this
+
     return 0;
 }
 
