@@ -29,10 +29,10 @@ private:
     void tournamentHelper(TournamentNode* root);
 
 public:
-    TournamentTree();
     std::vector<Monster> m_finals;
     std::vector<Monster> m_losersBracket;
     TournamentNode* m_root;
+    TournamentTree(TournamentNode* root);
     TournamentTree(std::vector<Monster> bracket);
     TournamentTree(std::string file);
     virtual ~TournamentTree();
