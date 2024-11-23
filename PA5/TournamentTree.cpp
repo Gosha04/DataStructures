@@ -1,18 +1,7 @@
-/*
-AUTHOR INFO
-Names: Joshua Vaysman, Divi Newton
-Student IDs: 2449656, 2440117
-Emails: vaysman@chapman.edu, dnewton@chapman.edu
-Class Section: CPSC-350-02
-Assignment: PA5 - Scare Games
-*/
-
 #include "TournamentTree.h"
 #include <iostream>
 #include <cmath>
 
-// constructor that uses a vector bracket
-// sets all variables to correct values and calls createTree
 TournamentTree::TournamentTree(std::vector<Monster> bracket) {
     m_bracket = bracket;
     m_root = nullptr;
@@ -20,9 +9,6 @@ TournamentTree::TournamentTree(std::vector<Monster> bracket) {
     // populateTree(m_bracket);
 }
 
-// constructor that takes in a file name
-// sets all variables to correct values
-// modifies the bracked and creates the tree for this object
 TournamentTree::TournamentTree(std::string file) {
     m_file = file;
     m_root = nullptr;
@@ -33,16 +19,13 @@ TournamentTree::TournamentTree(std::string file) {
         m_bracket.push_back(Monster(name, screamPower));
         std::cout<< m_bracket.size()<< std::endl;
     } 
-    createTree(m_bracket); // uses the member bracket
+    createTree(m_bracket); // should be the member bracket
 }
 
-// destructor
 TournamentTree::~TournamentTree () {
     m_reader.close();
 }
 
-// createTree method takes in a bracked and creates a Tree from it
-// uses placceholders in the tree, and uses createTreeHelper method to complete tasks
 void TournamentTree::createTree(std::vector<Monster> bracket) {
     while ((bracket.size() & (bracket.size() - 1)) != 0) {
         bracket.push_back(Monster("BYE", -1)); // Add a placeholder "BYE" monster
@@ -51,13 +34,11 @@ void TournamentTree::createTree(std::vector<Monster> bracket) {
     std::cout << bracket.size() << std::endl;
 
     m_bracketSize = (2 * bracket.size()) - 1; // Total nodes in a full binary tree
-    int currSize = 0; // Track current size of the tree
+    int currSize = 0;                         // Track current size of the tree
     int index = 0;
-    createTreeHelper(m_root, currSize, 0, bracket, index); // Build the tree
+    createTreeHelper(m_root, currSize, 0, bracket, index);       // Build the tree
 }
 
-// createTreeHelper method completes tree creation
-// populates each tree node with the correct values
 void TournamentTree::createTreeHelper(TournamentNode*& root, int& currSize, int currentLvl, std::vector<Monster>& bracket,
 int& index) {
     int height = calculateMinHeight(bracket.size()); // geeks for geeks
@@ -88,12 +69,10 @@ int& index) {
         ++index;
     }
 
-    // uses recursion to complete the tree
     createTreeHelper(root->m_left, currSize, currentLvl + 1, bracket, index);
     createTreeHelper(root->m_right, currSize, currentLvl + 1, bracket, index);
 }
 
-// calculateMinHeight method returns an int of the minimum height of the tree
 int TournamentTree::calculateMinHeight (int numLeaves) {
     if (numLeaves <= 0) {
         return -1; 
@@ -105,15 +84,11 @@ int TournamentTree::calculateMinHeight (int numLeaves) {
     return height;
 }
 
-// singleElim method completes logic for single elimination games
-// uses tournamentHelper method
 Monster TournamentTree::singleElim() {
     tournamentHelper(m_root);
     return m_root -> m_data;
 }
 
-// doubleElim method completes logic for double elimination games
-// uses tournamentHelper and other methods to complete tasks
 Monster TournamentTree::doubleElim() {
     int i = 0;
     while (i < m_losersBracket.size()) {
@@ -128,8 +103,6 @@ Monster TournamentTree::doubleElim() {
     return m_root -> m_data;
 }
 
-// finalWinner method is used in double elimination to complete the game
-// returns the final winner of double elimination rounds
 Monster TournamentTree::finalWinner() {
     m_finals.push_back(singleElim());
     // printLosers();
@@ -141,8 +114,6 @@ Monster TournamentTree::finalWinner() {
     }
 }
 
-// tournamentHelper method completes fight logic to finish the game
-// method takes all possible changes into consideration
 void TournamentTree::tournamentHelper(TournamentNode* root) {
     std::cout << "CURRENT NODE: " << root -> m_data.getName() << std::endl;
     if (root -> m_left == nullptr && root -> m_right == nullptr) {
@@ -169,48 +140,9 @@ void TournamentTree::tournamentHelper(TournamentNode* root) {
     }
 }
 
-// printLosers method prints the loser of the game
 void TournamentTree::printLosers() {
     std::cout << "\nLOSER Size: " << m_losersBracket.size() << std::endl;
     for (int i = 0; i < m_losersBracket.size(); ++i) {
         std::cout << m_losersBracket[i].getName() << std::endl;
     }
-}
-
-// Recursive helper function for DOT file generation
-// saveTreeAsDotHelper method taken from assignment notes
-void saveTreeAsDotHelper(TournamentNode* node, std::ofstream& file, int& nodeID) {
-    if (node == NULL) return;
-
-    int currentID = nodeID++;
-    file << "    node" << currentID << " [label=\"" << node-> m_data.getName()
-         << " (Power: " << node->m_data.getScream() << ")\"];\n";
-
-    if (node->m_left) {
-        int leftID = nodeID;
-        saveTreeAsDotHelper(node->m_left, file, nodeID);
-        file << "    node" << currentID << " -> node" << leftID << ";\n";
-    }
-
-    if (node->m_right) {
-        int rightID = nodeID;
-        saveTreeAsDotHelper(node->m_right, file, nodeID);
-        file << "    node" << currentID << " -> node" << rightID << ";\n";
-    }
-}
-
-// Function to save the tree as a DOT file
-// saveTreeAsDot method taken from assignment notes
-void saveTreeAsDot(const std::string& filename, TournamentNode* rootNode) {
-    std::ofstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Failed to open file for DOT output: " << filename << "\n";
-        return;
-    }
-
-    file << "digraph TournamentTree {\n";
-    int nodeID = 0;
-    saveTreeAsDotHelper(rootNode, file, nodeID);
-    file << "}\n";
-    file.close();
 }
