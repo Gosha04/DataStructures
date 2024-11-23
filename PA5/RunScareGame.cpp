@@ -45,10 +45,10 @@ void RunScareGame::runTournament() {
         root -> m_left = tree.m_root;
         root -> m_right = doubleTree.m_root;
         root->fight();
-        doubleTree.saveTreeAsDot(m_output, root); // outputs to dot file
+        saveTreeAsDot(m_output, root); // outputs to dot file
     } else {
         TournamentTree tree(m_input);
         tree.singleElim();
-        tree.saveTreeAsDot(m_output, tree.m_root); // outputs to dot file
+        saveTreeAsDot(m_output, tree.m_root); // outputs to dot file
     }
 }
