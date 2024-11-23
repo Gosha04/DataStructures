@@ -8,7 +8,6 @@ Assignment: PA5 - Scare Games
 */
 
 #include "TournamentNode.h"
-#include <iostream>
 
 // default constructor
 // sets all variables to NULL
