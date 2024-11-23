@@ -11,6 +11,7 @@ Assignment: PA5 - Scare Games
 #define TOURNAMENTNODE_H
 
 #include "Monster.h"
+#include <iostream>
 
 // defines TournamentNode class
 // class includes public constructor and destructor, other important variables and methods

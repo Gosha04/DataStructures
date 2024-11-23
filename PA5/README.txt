@@ -26,8 +26,8 @@ We used the following articles for help with specific programming syntax:
 - We also used the DOT file code provided in the project spec
 
 RUNNING INSTRUCTIONS
-note: ensure to replace "input.txt" and "output.dot" with the correct input and output file names, 
+note: ensure to replace "input.txt" and "output.js" with the correct input and output file names, 
     and replace "double" with either "single" or "double" to indicate game elimination type
 
-    g++ -o output.out *.cpp
-    ./output.out input.txt output.dot double
+    g++ -o tournament *.cpp
+    ./tournament input.txt output.js double

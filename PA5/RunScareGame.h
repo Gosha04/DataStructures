@@ -11,6 +11,9 @@ Assignment: PA5 - Scare Games
 #define RUNSCAREGAME_H
 
 #include <string>
+#include <iostream>
+#include "TournamentTree.h"
+#include "DOTFileGeneratorMethods.cpp"
 
 // defines RunScareGame class
 // class includes public constructor and destructor, overloaded constructor, and runTournament methods

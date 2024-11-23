@@ -20,8 +20,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    if (argv[3] != "single" && argv[3] != "double") {
-        cout << "Incorrect game type. Use either single or double" << endl;
+    if (strcmp(argv[3], "single") != 0 && strcmp(argv[3], "double") != 0) {
+        cout << "Incorrect game type. Use either single or double." << endl;
         return 1;
     }
 

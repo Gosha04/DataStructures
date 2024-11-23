@@ -8,8 +8,6 @@ Assignment: PA5 - Scare Games
 */
 
 #include "RunScareGame.h"
-#include "TournamentTree.h"
-#include <iostream>
 
 // overloaded constructor with file names and game type included
 // sets all of the variables to the correct local names
@@ -35,18 +33,19 @@ RunScareGame::~RunScareGame() {
 // method called TournamentTree methods to complete logic
 void RunScareGame::runTournament() {
     if (m_type == "double") {
+
         TournamentTree tree(m_input);
         tree.singleElim();
         TournamentTree doubleTree(tree.m_losersBracket);
         doubleTree.doubleElim();
-        // saveTreeAsDot("output", tree.m_root);
-        // saveTreeAsDot("doubleOut", doubleTree.m_root);
+
         TournamentNode* root = new TournamentNode();
         root -> m_left = tree.m_root;
         root -> m_right = doubleTree.m_root;
         root->fight();
         saveTreeAsDot(m_output, root); // outputs to dot file
     } else {
+        
         TournamentTree tree(m_input);
         tree.singleElim();
         saveTreeAsDot(m_output, tree.m_root); // outputs to dot file

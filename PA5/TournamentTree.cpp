@@ -8,8 +8,6 @@ Assignment: PA5 - Scare Games
 */
 
 #include "TournamentTree.h"
-#include <iostream>
-#include <cmath>
 
 // constructor that uses a vector bracket
 // sets all variables to correct values and calls createTree
@@ -177,40 +175,3 @@ void TournamentTree::printLosers() {
     }
 }
 
-// Recursive helper function for DOT file generation
-// saveTreeAsDotHelper method taken from assignment notes
-void saveTreeAsDotHelper(TournamentNode* node, std::ofstream& file, int& nodeID) {
-    if (node == NULL) return;
-
-    int currentID = nodeID++;
-    file << "    node" << currentID << " [label=\"" << node-> m_data.getName()
-         << " (Power: " << node->m_data.getScream() << ")\"];\n";
-
-    if (node->m_left) {
-        int leftID = nodeID;
-        saveTreeAsDotHelper(node->m_left, file, nodeID);
-        file << "    node" << currentID << " -> node" << leftID << ";\n";
-    }
-
-    if (node->m_right) {
-        int rightID = nodeID;
-        saveTreeAsDotHelper(node->m_right, file, nodeID);
-        file << "    node" << currentID << " -> node" << rightID << ";\n";
-    }
-}
-
-// Function to save the tree as a DOT file
-// saveTreeAsDot method taken from assignment notes
-void saveTreeAsDot(const std::string& filename, TournamentNode* rootNode) {
-    std::ofstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Failed to open file for DOT output: " << filename << "\n";
-        return;
-    }
-
-    file << "digraph TournamentTree {\n";
-    int nodeID = 0;
-    saveTreeAsDotHelper(rootNode, file, nodeID);
-    file << "}\n";
-    file.close();
-}
