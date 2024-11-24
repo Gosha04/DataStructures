@@ -14,6 +14,7 @@ Assignment: PA5 - Scare Games
 #include <fstream>
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 // defines TournamentTree class
 // class includes public constructor and destructor, and other methods

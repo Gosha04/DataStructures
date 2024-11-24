@@ -26,6 +26,9 @@ We used the following articles for help with specific programming syntax:
 - We also used the DOT file code provided in the project spec
 
 RUNNING INSTRUCTIONS
+input note: all screamPower should be positive, our BYE placeholders are set to -1, 
+    and anything lower will stop them from working
+    
 note: ensure to replace "input.txt" and "output.js" with the correct input and output file names, 
     and replace "double" with either "single" or "double" to indicate game elimination type
 
