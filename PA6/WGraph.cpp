@@ -32,7 +32,6 @@ void WGraph::addEdge(VertexID i, VertexID j, double w){
     if (i < m_size && j < m_size){
         m_adj[i][j] = w;
         m_adj[j][i] = w;
-        edges.add(Edge(i, j, w));
     }
 }
 
@@ -40,8 +39,6 @@ void WGraph::removeEdge(VertexID i, VertexID j){
     if (i < m_size && j < m_size) {
         m_adj[i][j] = std::numeric_limits<double>::max();
         m_adj[j][i] = std::numeric_limits<double>::max();
-
-        //TODO Add removal from PQ
     }
 }
 
@@ -78,33 +75,59 @@ double WGraph::cheapestCost(VertexID i, VertexID j){
 }
 
 void WGraph::computeMST() {
-    std::vector<Edge> checkedEdges;
-    int* vertices = new int[m_size];
-    
-    for (int i = 0; i < m_size; ++i) {
-        vertices[i] = i + 1; // Assume that vertices start at 1
+    for (int i = 0; i < m_size ; ++i) {
+        for (int j = 0; j < m_size; ++j) {
+            if (m_adj[i][j] != std::numeric_limits<double>::max()) {
+                //std::cout << i << j << m_adj[i][j] << std::endl;
+                edges.add(Edge(j, i, m_adj[i][j]));
+            }
+        }
     }
+    
+    std::set<int> visitedVertices; 
+    std::vector<Edge> mstEdges;   
 
-    while (!edges.isEmpty()) {
+    while (!edges.isEmpty() && mstEdges.size() < m_size - 1) {
         Edge currEdge = edges.remove();
         int src = currEdge.m_source;
         int snk = currEdge.m_sink;
 
-        int vertSource = vertices[src];
-        int vertSink = vertices[snk];
+        if (snk == src) {
+            continue;
+        } 
 
-        if (vertSource != vertSink) {
-            checkedEdges.push_back(currEdge);
+        if (visitedVertices.find(src) == visitedVertices.end() || visitedVertices.find(snk) == visitedVertices.end()) {
+            //std::cout << "Check the visits\n";
+            std::set<int> tempHold;
+            std::cout << src << " and " << snk << std::endl;
 
-            int smallerPath = std::min(vertSource, vertSink);
-            int longerPath = std::max(vertSource, vertSink);
-
-            for (int i = 0; i < m_size; ++i) {
-                if (vertices[i] == longerPath) {
-                    vertices[i] = smallerPath;
-                }
-            }
+            std::cout << "Adding: " << src << " to " << snk << std::endl;
+            mstEdges.push_back(currEdge);
+            visitedVertices.insert(src);
+            visitedVertices.insert(snk);
         }
     }
-    delete[] vertices;
-}                          
+
+    std::cout << "MST Edges:\n";
+    while (!mstEdges.empty()) {
+        std::cout << "Source: " << mstEdges.back().m_source << ", Sink: " << mstEdges.back().m_sink  
+        << ", Weight: " << mstEdges.back().m_weight << "\n";
+
+        mstEdges.pop_back();
+    }
+}
+
+int main() {
+    WGraph graph(5);  
+    graph.addEdge(0, 1, 10);
+    graph.addEdge(0, 2, 6);
+    graph.addEdge(0, 3, 5);
+    graph.addEdge(1, 3, 15);
+    graph.addEdge(2, 3, 4);
+    graph.addEdge(3, 4, 7);
+
+    // graph.addEdge(1, 2, 12);
+
+    graph.computeMST();
+    return 0;
+}
