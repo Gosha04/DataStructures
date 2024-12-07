@@ -1,3 +1,13 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA6
+*/
+
+// This is the Priority Queue code we worked on in class
+
 #ifndef P_QUEUE_H
 #define P_QUEUE_H
 

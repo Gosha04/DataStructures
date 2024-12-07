@@ -1,3 +1,13 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA6
+*/
+
+// The Double List Code we worked on during class
+
 #ifndef DBL_LIST_H
 #define DBL_LIST_H
 

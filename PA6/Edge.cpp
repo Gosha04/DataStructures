@@ -17,9 +17,24 @@ Edge::~Edge() {
 }
 
 bool Edge::operator<(const Edge& other) const {
-    return m_weight < other.m_weight;
+    if (m_weight != other.m_weight) {
+        return m_weight < other.m_weight;
+    } else { 
+        return m_sink < other.m_sink;
+    }
 }
 
 bool Edge::operator>(const Edge& other) const {
-    return m_weight > other.m_weight;
+    if (m_weight != other.m_weight) {
+        return m_weight > other.m_weight;
+    } else {
+        return m_sink > other.m_sink;
+    }
+}
+
+Edge& Edge::operator=(const Edge& other) {
+        m_source = other.m_source;
+        m_sink = other.m_sink;
+        m_weight = other.m_weight;
+        return *this;
 }

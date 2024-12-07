@@ -1,0 +1,23 @@
+/*
+Joshua Vaysman
+2449656
+vaysman@chapman.edu 
+CPSC 350-02
+PA6
+*/
+
+Source Files Used:
+Edge.cpp, Edge.h, WGraph.cpp, WGraph.h, ListNode.h, DblList.h, PQueue.h
+
+Errors & Limitations:
+If there 
+
+References:
+Geeksforgeeks.com and cppreference.com to refresh IO operations and to get correct syntax if it was necessary.
+
+Compilation Instructions:
+g++ *.cpp -o MST
+
+Run Instructions:
+./MST "input"
+"input" can be replaced with any file with compatible inputs like those detailed in the PA6 instructions
